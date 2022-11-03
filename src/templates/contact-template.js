@@ -17,7 +17,7 @@ const ContactTemplate = ({ data }) => {
     <Layout title={frontmatter.title}>
       <ContactWrapper>
         <ContactCopy dangerouslySetInnerHTML={{ __html: html }} />
-        <ContactForm />
+        {/* <ContactForm /> */}
       </ContactWrapper>
     </Layout>
   );

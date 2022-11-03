@@ -1,8 +1,8 @@
 ---
 template: "index-template"
-title: "Gatsby Starter Glass"
+title: "Hardware Security Lab"
 ---
 
-# Hello World
+# Hardware Security Lab
 
-A minimal & beautiful gatsby personal blog starter with nice glassmorphism UI.
+Research in secure hardware design, microarchitectural side-channel attacks, and applied cryptography, at Georgia Institute of Technology.

@@ -1,37 +1,31 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import PostList from '../components/post-list';
+import ResearchList from '../components/research-list.js';
 import styled from 'styled-components';
 import StyledLink from '../components/styled-link';
+import PeopleList from '../components/people.js';
 
 const HomePage = ({ data }) => {
-  const posts = data.allMarkdownRemark.nodes;
   const intro = data.markdownRemark.html;
   const title = data.markdownRemark.frontmatter.title;
-
+  
   return (
     <Layout title={title}>
+      <img id="group-photo" src="/images/group_photo.jpg"
+      css={`
+        // height: 600px;
+        text-align: center;
+        margin: auto;
+      `}/>
       <Intro
         dangerouslySetInnerHTML={{
           __html: intro,
         }}
       />
 
-      <PostList posts={posts} />
-      <StyledLink
-        css={`
-          display: block;
-          margin-top: var(--size-800);
-          margin-bottom: var(--size-800);
-          margin-left: auto;
-          margin-right: auto;
-          width: fit-content;
-        `}
-        to="/blog"
-      >
-        View All posts
-      </StyledLink>
+      <PeopleList/>
     </Layout>
   );
 };
@@ -50,7 +44,6 @@ const Intro = styled.div`
   text-align: center;
 
   & p {
-    text-transform: capitalize;
     font-size: var(--size-400);
   }
 

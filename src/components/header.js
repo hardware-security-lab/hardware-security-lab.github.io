@@ -7,18 +7,13 @@ import { useStaticQuery, graphql } from "gatsby";
 
 const HEADER_NAV_ITEM = [
   {
-    label: "Blog",
-    url: "/blog",
+    label: "Research",
+    url: "/research",
     isExternal: false,
   },
   {
-    label: "About",
-    url: "/about",
-    isExternal: false,
-  },
-  {
-    label: "Contact",
-    url: "/contact",
+    label: "Join Us",
+    url: "/join-us",
     isExternal: false,
   },
 ];
@@ -54,7 +49,6 @@ const Header = () => {
                 </HeaderNavListItem>
               );
             }
-
             return (
               <HeaderNavListItem key={index}>
                 <Link to={item.url}>{item.label}</Link>
