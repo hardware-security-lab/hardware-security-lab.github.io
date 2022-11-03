@@ -1,0 +1,24 @@
+:root {
+    --gt-md-gold: #A4925A;
+    --dark-red: #B1060E;
+}
+
+body {
+    font-family: 'Work Sans', sans-serif;
+    color: #4A4A4A;
+}
+
+h1 {
+    color: var(--dark-red);
+}
+
+h3 {
+    /* color: var(--gt-md-gold); */
+    text-transform: uppercase;
+    font-family: 'Montserrat';
+}
+
+a {
+    color: var(--dark-red);
+    text-decoration: none;
+}

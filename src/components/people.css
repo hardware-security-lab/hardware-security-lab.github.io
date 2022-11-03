@@ -1,34 +1,69 @@
-p.person-name {
-    text-align: center;
+body {
+    color: #4A4A4A !important;
+    font-family: 'Work Sans', serif;
 }
 
-section.people ul {
-    list-style-type: none;
+div.columns::after {
+    content: " ";
+    width: 500px;
+}
+
+section#people > div.columns {
     display: flex;
-    flex-wrap: wrap;
-}
-
-section.people > ul {
     flex-flow: column;
-    padding: 0;
-    margin: 0;
 }
 
-section.people-section > ul {
-    flex-flow: row;
-    flex-wrap: wrap;
-    padding: 0;
-    margin: 0;
-    text-align: center;
+section.people-section > div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 1em;
 }
 
 .person-photo-container {
-    margin: 1em;
-    padding: 0;
+    padding: 2em;
+    display: flex;
+    flex-basis: 0;
+    flex-grow: 1;
 }
 
 img.person-photo {
-    max-width: 250px;
-    height: 250px;
-    border-radius: 50%;
+    max-width: 150px;
+    height: 150px;
+    margin-right: 1em;
+}
+
+.person-information {
+    text-align: left;  
+    text-decoration: none;
+}
+
+p.person-name {
+    color: #252525 !important;
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+}
+
+p.person-email {
+    color: #363636;
+    text-decoration: none;
+}
+
+@media screen and (max-width: 769px) {
+    section#people section.people-section > div {
+        grid-template-columns: 1fr;
+    }
+
+    section#people img.person-photo {
+        max-width: 20vw;
+        height: 20vw;
+    }
+
+    section#people div.person-photo-container {
+        padding-left: 0;
+        padding-right: 0;
+
+        margin-left: 0;
+        margin-right: 0;
+        max-width: 85vw;
+    }
 }

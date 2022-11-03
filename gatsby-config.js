@@ -16,14 +16,6 @@ module.exports = {
         name: "github",
         url: "https://github.com",
       },
-      {
-        name: "twitter",
-        url: "https://twitter.com",
-      },
-      {
-        name: "instagram",
-        url: "https://instagram.com",
-      },
     ],
   },
   plugins: [

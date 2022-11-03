@@ -6,37 +6,35 @@ import './people.css';
 
 const allPeople = {
     "Faculty": [
-        {dblpName: "Daniel Genkin", website: "google.com", role: "Associate Professor", photo: defaultProfilePhoto},
+        {dblpName: "Daniel Genkin", email: "genkin@gatech.edu", website: "https://faculty.cc.gatech.edu/~genkin", role: "Associate Professor", photo: defaultProfilePhoto},
     ],
     "Post-Doctoral Researchers": [],
     "PhD Students": [
-        {dblpName: "Stephan van Schaik", website: "https://synkhronix.com", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Andrew Kwong", website: "https://andrewkwong.org/", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Youssef Toubah", website: "google.com", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Ingab Kang", website: "https://scholar.google.com/citations?user=ik1D_PUAAAAJ&hl=en", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Jason Kim", website: "https://jasonkim.page", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Jie Jeff Xu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Nureddin Kamadan", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Pradyumna Shome", website: "pradyumnashome.com", role: "PhD Student", photo: defaultProfilePhoto}
+        {dblpName: "Stephan van Schaik", email: "stephvs@umich.edu", website: "https://synkhronix.com", role: "PhD Student", photo: defaultProfilePhoto},
+        {dblpName: "Andrew Kwong", email: "ankwong@umich.edu", website: "https://andrewkwong.org/", role: "PhD Student", photo: defaultProfilePhoto},
+        {dblpName: "Youssef Toubah", email: "ytobah@umich.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
+        {dblpName: "Ingab Kang", email: "igkang@umich.edu", website: "https://scholar.google.com/citations?user=ik1D_PUAAAAJ&hl=en", role: "PhD Student", photo: defaultProfilePhoto},
+        {dblpName: "Jason Kim", email: "nosajmik@gatech.edu", website: "https://jasonkim.page", role: "PhD Student", photo: defaultProfilePhoto},
+        {dblpName: "Jie Jeff Xu", email: "jxu680@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
+        {dblpName: "Nureddin Kamadan", email: "kamadan@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
+        {dblpName: "Pradyumna Shome", email: "pradyumna.shome@gatech.edu", website: "https://pradyumnashome.com", role: "PhD Student", photo: defaultProfilePhoto}
     ],
     "MS Students": [
-    {dblpName: "Hritvik Taneja", website: "/", role: "MS Student", photo: defaultProfilePhoto},
-    {dblpName: "Byeongyong Go", website: "/", role: "MS Student", photo: defaultProfilePhoto},
-    {dblpName: "Jakub Jackowiak", website: "/", role: "MS Student", photo: defaultProfilePhoto}],
+    {dblpName: "Hritvik Taneja", email: "htaneja3@gatech.edu", website: "/", role: "MS Student", photo: defaultProfilePhoto},
+    {dblpName: "Byeongyong Go", email: "bygo@gatech.edu", website: "/", role: "MS Student", photo: defaultProfilePhoto},
+    {dblpName: "Jakub Jackowiak", email: "jjackowiak3@gatech.edu", website: "/", role: "MS Student", photo: defaultProfilePhoto}],
     "Undergraduates": [
-    {dblpName: "Walter Wang", website: "/", role: "Undergraduate", photo: defaultProfilePhoto}]
+    {dblpName: "Walter Wang", email: "walwang@umich.edu", website: "/", role: "Undergraduate", photo: defaultProfilePhoto}]
 };
 
 const PeopleList = (props) => {
     const allSections = Object.keys(allPeople).map((sectionName, index) => {
-        return <li>
-            <PeopleListSection key={index} sectionName={sectionName} people={allPeople[sectionName]}/>
-        </li>
+        return <PeopleListSection key={index} sectionName={sectionName} people={allPeople[sectionName]}/>;
     });
-    return <section className="people">
-        <ul>
+    return <section id="people">
+        <div className="columns">
             {allSections}
-        </ul>
+        </div>
     </section>;
 }
 export default PeopleList;
@@ -54,18 +52,27 @@ const PeopleListSection = (props) => {
     });
 
     return <section className="people-section">
-            <h2>{sectionName}</h2>
-            <ul>
+            <h3>{sectionName}</h3>
+            <div className="columns">
                 {profilePhotos}
-            </ul>
+            </div>
         </section>;
+}
+
+const emailMangle = (email) => {
+    const parts = email.split("@");
+    return parts[0] + " [at] " + parts[1];
 }
 
 
 const ProfilePhoto = props => {
     const person = props.person;
-    return <li className="person-photo-container">
+    return <div className="person-photo-container">
         <img className="person-photo" src={defaultProfilePhoto}></img>
-        <p className="person-name"><a href={person.website}>{person.dblpName}</a></p>
-    </li>;
+        <div className="person-information">
+            <p className="person-name">{person.dblpName}</p>
+            <p className="person-email">{emailMangle(person.email)}</p>
+            <p className="person-website"><a href={person.website}>Website</a></p>
+        </div>
+    </div>;
 }

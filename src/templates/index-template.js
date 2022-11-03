@@ -1,10 +1,7 @@
 import React, { useEffect } from 'react';
 import { graphql } from 'gatsby';
 import Layout from '../components/layout';
-import PostList from '../components/post-list';
-import ResearchList from '../components/research-list.js';
 import styled from 'styled-components';
-import StyledLink from '../components/styled-link';
 import PeopleList from '../components/people.js';
 
 const HomePage = ({ data }) => {

@@ -33,6 +33,8 @@ const Header = () => {
 
   return (
     <StyledHeader>
+      <style type="text/css">@import url(https://fonts.googleapis.com/css?family=Work+Sans:400,700);</style>
+      <style type="text/css">@import url(https://fonts.googleapis.com/css?family=Montserrat:700);</style>
       <HeaderWrapper>
         <HeaderTitle>
           <Link to="/">{site.siteMetadata.title}</Link>

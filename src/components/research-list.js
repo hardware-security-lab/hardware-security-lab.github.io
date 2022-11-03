@@ -13,7 +13,7 @@ const ResearchList = (props) => {
     );
   });
 
-  return <StyledPostList>{PublicationList}</StyledPostList>;
+  return <StyledResearchList>{PublicationList}</StyledResearchList>;
 };
 
 function getAuthorListString(authorList) {
@@ -35,13 +35,13 @@ export default ResearchList;
 const ResearchListItem = (props) => {
   const publication = props.publication;
   return (
-    <StyledPostListItem>
+    <StyledResearchListItem>
       <Tags tags={[publication.type]} />
 
-      <PostListTitle>
+      <ResearchListTitle>
         <Link to={publication.url}>{publication.title}</Link>
-      </PostListTitle>
-      <PostListExcerpt
+      </ResearchListTitle>
+      <ResearchListExcerpt
         dangerouslySetInnerHTML={{
           __html: getAuthorListString(publication.authors),
         }}
@@ -49,11 +49,11 @@ const ResearchListItem = (props) => {
 
         <span>{publication.venue} {publication.year}</span>
 
-    </StyledPostListItem>
+    </StyledResearchListItem>
   );
 };
 
-const StyledPostList = styled.ul`
+const StyledResearchList = styled.ul`
   padding: 0;
   list-style: none;
   display: flex;
@@ -69,7 +69,7 @@ const StyledPostList = styled.ul`
   }
 `;
 
-const StyledPostListItem = styled.li`
+const StyledResearchListItem = styled.li`
   display: flex;
   padding: 1.5rem;
   border-radius: 8px;
@@ -96,10 +96,14 @@ const StyledPostListItem = styled.li`
     & {
       margin-top: var(--size-600);
     }
+  
+  @media screen and (max-width: 769px) {
+    font-size: 0.75em;
+  }
   }
 `;
 
-const PostListTitle = styled.h2`
+const ResearchListTitle = styled.h2`
   line-height: 1.2;
   margin-top: 1rem;
   margin-bottom: 1rem;
@@ -120,14 +124,21 @@ const PostListTitle = styled.h2`
     left: 0;
     right: 0;
   }
+
+  @media screen and (max-width: 769px) {
+    font-size: 1.25em;
+  }
 `;
 
-const PostListExcerpt = styled.p`
+const ResearchListExcerpt = styled.p`
   margin-top: auto;
   font-size: var(--size-500);
+  @media screen and (max-width: 769px) {
+    font-size: 1em;
+  }
 `;
 
-const PostListMeta = styled.div`
+const ResearchListMeta = styled.div`
   margin-top: 2rem;
 
   font-size: var(--size-300);
