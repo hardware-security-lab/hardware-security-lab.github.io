@@ -19,11 +19,12 @@ const allPeople = {
         {dblpName: "Hritvik Taneja", email: "htaneja3@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
         {dblpName: "Walter Wang", email: "walwan@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
         {dblpName: "Jalen Chuang", email: "jchuang9@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Zeezoo Ryu", email: "zeezooryu@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto}]
+        {dblpName: "Zeezoo Ryu", email: "zeezooryu@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto}
     ],
     "MS Students": [
-    {dblpName: "Byeongyong Go", email: "bygo@gatech.edu", website: "/", role: "MS Student", photo: defaultProfilePhoto},
-    {dblpName: "Sam Lefforge", email: "plefforge3@gatech.edu", website: "/", role: "MS Student", photo: defaultProfilePhoto}],
+        {dblpName: "Byeongyong Go", email: "bygo@gatech.edu", website: "/", role: "MS Student", photo: defaultProfilePhoto},
+        {dblpName: "Sam Lefforge", email: "plefforge3@gatech.edu", website: "/", role: "MS Student", photo: defaultProfilePhoto}
+    ],
     "Undergraduates": []
 };
 
