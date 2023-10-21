@@ -26,3 +26,7 @@ a {
 img#group-photo {
     width: 40%;
 }
+
+section.major {
+    margin-bottom: 1rem;
+}

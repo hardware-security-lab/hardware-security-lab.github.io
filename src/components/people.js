@@ -31,7 +31,7 @@ const PeopleList = (props) => {
     const allSections = Object.keys(allPeople).map((sectionName, index) => {
         return <PeopleListSection key={index} sectionName={sectionName} people={allPeople[sectionName]}/>;
     });
-    return <section id="people">
+    return <section className="major" id="people">
         <h2>People</h2>
         <br></br>
         <div className="columns">
