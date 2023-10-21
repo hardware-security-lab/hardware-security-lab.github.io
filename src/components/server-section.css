@@ -1,0 +1,10 @@
+img#gallery {
+    height: 25rem;
+    text-align: center;
+    padding: 1rem;
+}
+
+#server-section-images {
+    display: flex;
+    justify-content: center;
+}

@@ -22,3 +22,7 @@ a {
     color: var(--dark-red);
     text-decoration: none;
 }
+
+img#group-photo {
+    width: 40%;
+}

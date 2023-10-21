@@ -3,6 +3,8 @@ import { graphql } from 'gatsby';
 import Layout from '../components/layout';
 import styled from 'styled-components';
 import PeopleList from '../components/people.js';
+import ServerSection from '../components/server-section.js';
+import ResearchComponent from '../components/research-component.js';
 
 const HomePage = ({ data }) => {
   const intro = data.markdownRemark.html;
@@ -23,6 +25,8 @@ const HomePage = ({ data }) => {
       />
 
       <PeopleList/>
+      <ServerSection/>
+      <ResearchComponent/>
     </Layout>
   );
 };

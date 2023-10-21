@@ -9,7 +9,7 @@ const allPeople = {
         {dblpName: "Daniel Genkin", email: "genkin@gatech.edu", website: "https://faculty.cc.gatech.edu/~genkin", role: "Associate Professor", photo: defaultProfilePhoto},
     ],
     "Post-Doctoral Researchers": [],
-    "PhD Students": [
+    "Students": [
         {dblpName: "Stephan van Schaik", email: "stephvs@umich.edu", website: "https://synkhronix.com", role: "PhD Student", photo: defaultProfilePhoto},
         {dblpName: "Youssef Toubah", email: "ytobah@umich.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
         {dblpName: "Ingab Kang", email: "igkang@umich.edu", website: "https://scholar.google.com/citations?user=ik1D_PUAAAAJ&hl=en", role: "PhD Student", photo: defaultProfilePhoto},
@@ -19,12 +19,11 @@ const allPeople = {
         {dblpName: "Hritvik Taneja", email: "htaneja3@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
         {dblpName: "Walter Wang", email: "walwan@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
         {dblpName: "Jalen Chuang", email: "jchuang9@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Zeezoo Ryu", email: "zeezooryu@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto}
-    ],
-    "MS Students": [
+        {dblpName: "Zeezoo Ryu", email: "zeezooryu@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
         {dblpName: "Byeongyong Go", email: "bygo@gatech.edu", website: "/", role: "MS Student", photo: defaultProfilePhoto},
         {dblpName: "Sam Lefforge", email: "plefforge3@gatech.edu", website: "/", role: "MS Student", photo: defaultProfilePhoto}
     ],
+    "MS Students": [ ],
     "Undergraduates": []
 };
 
@@ -33,6 +32,8 @@ const PeopleList = (props) => {
         return <PeopleListSection key={index} sectionName={sectionName} people={allPeople[sectionName]}/>;
     });
     return <section id="people">
+        <h2>People</h2>
+        <br></br>
         <div className="columns">
             {allSections}
         </div>

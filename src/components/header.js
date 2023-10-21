@@ -7,11 +7,6 @@ import { useStaticQuery, graphql } from "gatsby";
 
 const HEADER_NAV_ITEM = [
   {
-    label: "Research",
-    url: "/research",
-    isExternal: false,
-  },
-  {
     label: "Join Us",
     url: "/join-us",
     isExternal: false,
@@ -58,7 +53,7 @@ const Header = () => {
             );
           })}
           <HeaderNavListItem>
-            <ThemeSwitch />
+            {/* <ThemeSwitch /> */}
           </HeaderNavListItem>
         </HeaderNavList>
       </HeaderWrapper>
