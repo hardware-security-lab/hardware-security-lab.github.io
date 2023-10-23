@@ -1,0 +1,86 @@
+Faculty:
+- dblpName: Daniel Genkin
+  displayName: Daniel Genkin
+  email: genkin@gatech.edu
+  website: 'https://faculty.cc.gatech.edu/~genkin'
+  role: Associate Professor
+Post-Doctoral Researchers: []
+Students:
+- dblpName: Stephan van Schaik
+  yearJoinedTheGroup: 2021
+  email: stephvs@umich.edu
+  website: 'https://synkhronix.com'
+  role: PhD Student
+  photo: 1
+- dblpName: Ingab Kang
+  yearJoinedTheGroup: 2022
+  email: igkang@umich.edu
+  website: 'https://scholar.google.com/citations?user=ik1D_PUAAAAJ&hl=en'
+  role: PhD Student
+  photo: 1
+- dblpName: Jason Kim 0007
+  displayName: Jason Kim
+  yearJoinedTheGroup: 2022
+  email: nosajmik@gatech.edu
+  website: 'https://jasonkim.page'
+  role: PhD Student
+  photo: 1
+- dblpName: Nureddin Kamadan
+  yearJoinedTheGroup: 2019
+  email: kamadan@gatech.edu
+  website: /
+  role: PhD Student
+  photo: 1
+- dblpName: Pradyumna Shome
+  yearJoinedTheGroup: 2022
+  email: pradyumna.shome@gatech.edu
+  website: 'https://pradyumnashome.com'
+  role: PhD Student
+  photo: 1
+- dblpName: Hritvik Taneja
+  yearJoinedTheGroup: 2020
+  email: htaneja3@gatech.edu
+  website: /
+  role: PhD Student
+  photo: 1
+- dblpName: Walter Wang
+  yearJoinedTheGroup: 2018
+  email: walwan@gatech.edu
+  website: /
+  role: PhD Student
+  photo: 1
+- dblpName: Jalen Chuang
+  yearJoinedTheGroup: 2022
+  email: jchuang9@gatech.edu
+  website: /
+  role: PhD Student
+  photo: 1
+- dblpName: Zeezoo Ryu
+  yearJoinedTheGroup: 2022
+  email: zeezooryu@gatech.edu
+  website: /
+  role: PhD Student
+  photo: 1
+- dblpName: Byeongyong Go
+  yearJoinedTheGroup: 2022
+  email: bygo@gatech.edu
+  website: /
+  role: MS Student
+  photo: 1
+- dblpName: Sam Lefforge
+  yearJoinedTheGroup: 2022
+  email: plefforge3@gatech.edu
+  website: /
+  role: MS Student
+  photo: 1
+Close Collaborators:
+- dblpName: Youssef Tobah
+  email: ytobah@umich.edu
+  yearJoinedTheGroup: 2020
+  website:
+Alumni:
+- dblpName: Andrew Kwong
+  yearJoinedTheGroup: 2018
+  yearLeftTheGroup: 2023
+  email: andrew@cs.unc.edu
+  website: https://andrewkwong.org

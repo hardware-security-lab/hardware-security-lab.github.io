@@ -6,7 +6,7 @@ import { graphql } from 'gatsby';
 import PostList from './post-list';
 import styled from 'styled-components';
 import StyledLink from './styled-link';
-import PeopleList from './people.js';
+import people from "../data/people.yaml";
 
 // Gets a list of all publications from DBLP for which at least one group member was an author
 // groupAuthors is an array of Objects with the following keys:
@@ -38,9 +38,14 @@ async function getAllPapers(groupAuthors) {
                   "doi": hit.info.doi,
                   "id": hit["@id"],
                   "authors": hit.info.authors.author.map(publicationAuthor => {
-                    // If publicationAuthor is in groupAuthors, return their displayName, otherwise return their dblpName
+                    // If publicationAuthor is in groupAuthors, return their displayName
+                    // otherwise return their dblpName
                     const authorInGroup = groupAuthors.find(author => author.dblpName === publicationAuthor.text);
-                    return authorInGroup !== undefined ? authorInGroup.displayName : publicationAuthor.text;
+                    if (authorInGroup !== undefined && authorInGroup.displayName !== undefined) {
+                      // If there is no displayName, return the dblpName
+                      return authorInGroup.displayName; 
+                    }
+                    return publicationAuthor.text;
                   }),
               });        
           }
@@ -79,20 +84,8 @@ const ResearchList = (props) => {
 
 
 const ResearchComponent = ({ data }) => {
-  const groupAuthors = [
-    {dblpName: "Jason Kim 0007", yearJoinedTheGroup: 2021, displayName: "Jason Kim"},
-    {dblpName: "Pradyumna Shome", yearJoinedTheGroup: 2022, displayName: "Pradyumna Shome"},
-    {dblpName: "Nureddin Kamadan", yearJoinedTheGroup: 2022, displayName: "Nureddin Kamadan"},
-    {dblpName: "Hritvik Taneja", yearJoinedTheGroup: 2022, displayName: "Hritvik Taneja"},
-    {dblpName: "Ingab Kang", yearJoinedTheGroup: 2019, displayName: "Ingab Kang"},
-    {dblpName: "Byeongyong Go", yearJoinedTheGroup: 2022, displayName: "Byeongyong Go"},
-    {dblpName: "Stephan van Schaik", yearJoinedTheGroup: 2020, displayName: "Stephan van Schaik"},
-    {dblpName: "Daniel Genkin", yearJoinedTheGroup: 2018, displayName: "Daniel Genkin"},
-    {dblpName: "Walter Wang", yearJoinedTheGroup: 2022, displayName: "Walter Wang"},
-    {dblpName: "Zeezoo Ryu", yearJoinedTheGroup: 2022, displayName: "Zeezoo Ryu"},
-    {dblpName: "Jalen Chuang", yearJoinedTheGroup: 2022, displayName: "Jalen Chuang"},
-    {dblpName: "Sam Lefforge", yearJoinedTheGroup: 2022, displayName: "Sam Lefforge"},
-  ];
+  // Use map to get a list of all authors in each key and store it in an array
+  const groupAuthors = Object.keys(people).flatMap(key => people[key]);
   let [allPapers, setAllPapers] = useState([]);
 
   useEffect(() => {

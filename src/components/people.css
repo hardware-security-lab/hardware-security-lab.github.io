@@ -3,33 +3,36 @@ body {
     font-family: 'Work Sans', serif;
 }
 
-div.columns::after {
-    content: " ";
-    width: 500px;
-}
-
 section#people > div.columns {
     display: flex;
     flex-flow: column;
 }
 
-section.people-section > div {
+section.people-categories > div {
     display: grid;
     grid-template-columns: repeat(3, 25rem);
     margin: 1em;
+    align-items: center;
 }
 
-.person-photo-container {
-    padding: 0.5rem;
+.person-container {
     display: flex;
     flex-basis: 0;
     flex-grow: 1;
+    justify-items: left;
 }
 
 img.person-photo {
-    max-width: 100px;
-    height: 100px;
     margin-right: 1em;
+    width: 100%;
+    padding: 0.2rem;
+}
+
+div.person-photo-container {
+    width: 150px;
+    height: 150px;
+    margin-right: 2%;
+    margin-bottom: 2%;
 }
 
 .person-information {
@@ -50,22 +53,29 @@ p.person-email {
     width: 100%;
 }
 
-@media screen and (max-width: 769px) {
+@media screen and (max-width: 480px) {
     section#people section.people-section > div {
         grid-template-columns: 1fr;
+        width: 100%;
     }
 
     section#people img.person-photo {
-        max-width: 20vw;
-        height: 20vw;
+        width: 100%;
     }
 
     section#people div.person-photo-container {
-        padding-left: 0;
-        padding-right: 0;
+        width: 8rem;
+    }
 
-        margin-left: 0;
-        margin-right: 0;
-        max-width: 85vw;
+    section#people div.person-information {
+        text-overflow: wrap;
+    }
+
+    section#people p {
+        max-width: 12rem;
+    }
+
+    section#people-categories > div {
+        margin: unset;
     }
 }

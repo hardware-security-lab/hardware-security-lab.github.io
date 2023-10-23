@@ -5,6 +5,7 @@ import styled from 'styled-components';
 import PeopleList from '../components/people.js';
 import ServerSection from '../components/server-section.js';
 import ResearchComponent from '../components/research-component.js';
+import groupPhoto from "../../static/images/group_photo.jpg";
 
 const HomePage = ({ data }) => {
   const intro = data.markdownRemark.html;
@@ -12,9 +13,8 @@ const HomePage = ({ data }) => {
   
   return (
     <Layout title={title}>
-      <img id="group-photo" src="/images/group_photo.jpg"
+      <img id="group-photo" src={groupPhoto} alt="Group photo"
       css={`
-        // height: 600px;
         text-align: center;
         margin: auto;
       `}/>

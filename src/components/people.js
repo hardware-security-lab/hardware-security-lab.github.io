@@ -4,32 +4,9 @@ import defaultProfilePhoto from "../../static/images/default_profile_photo.webp"
 
 import './people.css';
 
-const allPeople = {
-    "Faculty": [
-        {dblpName: "Daniel Genkin", email: "genkin@gatech.edu", website: "https://faculty.cc.gatech.edu/~genkin", role: "Associate Professor", photo: defaultProfilePhoto},
-    ],
-    "Post-Doctoral Researchers": [],
-    "Students": [
-        {dblpName: "Stephan van Schaik", email: "stephvs@umich.edu", website: "https://synkhronix.com", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Youssef Toubah", email: "ytobah@umich.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Ingab Kang", email: "igkang@umich.edu", website: "https://scholar.google.com/citations?user=ik1D_PUAAAAJ&hl=en", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Jason Kim", email: "nosajmik@gatech.edu", website: "https://jasonkim.page", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Nureddin Kamadan", email: "kamadan@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Pradyumna Shome", email: "pradyumna.shome@gatech.edu", website: "https://pradyumnashome.com", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Hritvik Taneja", email: "htaneja3@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Walter Wang", email: "walwan@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Jalen Chuang", email: "jchuang9@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Zeezoo Ryu", email: "zeezooryu@gatech.edu", website: "/", role: "PhD Student", photo: defaultProfilePhoto},
-        {dblpName: "Byeongyong Go", email: "bygo@gatech.edu", website: "/", role: "MS Student", photo: defaultProfilePhoto},
-        {dblpName: "Sam Lefforge", email: "plefforge3@gatech.edu", website: "/", role: "MS Student", photo: defaultProfilePhoto}
-    ],
-    "MS Students": [ ],
-    "Undergraduates": []
-};
-
 const PeopleList = (props) => {
-    const allSections = Object.keys(allPeople).map((sectionName, index) => {
-        return <PeopleListSection key={index} sectionName={sectionName} people={allPeople[sectionName]}/>;
+    const allSections = Object.keys(people).map((sectionName, index) => {
+        return <PeopleListSection key={index} sectionName={sectionName} people={people[sectionName]}/>;
     });
     return <section className="major" id="people">
         <h2>People</h2>
@@ -53,7 +30,7 @@ const PeopleListSection = (props) => {
         return <ProfilePhoto key={index} person={person}/>
     });
 
-    return <section className="people-section">
+    return <section id="people-categories">
             <h3>{sectionName}</h3>
             <div className="columns">
                 {profilePhotos}
@@ -69,12 +46,27 @@ const emailMangle = (email) => {
 
 const ProfilePhoto = props => {
     const person = props.person;
-    return <div className="person-photo-container">
-        <img className="person-photo" src={defaultProfilePhoto}></img>
+    const website = person.website !== undefined && person.website !== "" ? person.website : "/";
+    let photoPath = defaultProfilePhoto;
+    let personName = "";
+    if (person.displayName !== undefined && person.displayName !== "") {
+        let personDisplayName = person.displayName.toLowerCase();
+        photoPath = "/images/people/" + personDisplayName.replaceAll(" ", "-") + ".webp";
+        personName = person.displayName;
+    } else if (person.dblpName !== undefined && person.dblpName !== "") {
+        let personDblpName = person.dblpName.toLowerCase();
+        photoPath = "/images/people/" + personDblpName.replaceAll(" ", "-") + ".webp";
+        personName = person.dblpName;
+    }
+    
+    return <div className="person-container">
+        <div className="person-photo-container">
+            <img className="person-photo" src={photoPath}></img>
+        </div>
         <div className="person-information">
-            <p className="person-name">{person.dblpName}</p>
+            <p className="person-name">{personName}</p>
             <p className="person-email">{emailMangle(person.email)}</p>
-            <p className="person-website"><a href={person.website}>Website</a></p>
+            <p className="person-website"><a href={website}>Website</a></p>
         </div>
     </div>;
 }

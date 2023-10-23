@@ -8,3 +8,13 @@ img#gallery {
     display: flex;
     justify-content: center;
 }
+
+@media screen and (max-width: 769px) {
+    img#gallery {
+        height: 100%;
+    }
+    section#server-section-images {
+        flex-flow: column;
+        justify-content: center;
+    }
+}

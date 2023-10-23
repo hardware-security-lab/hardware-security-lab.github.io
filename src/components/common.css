@@ -30,3 +30,9 @@ img#group-photo {
 section.major {
     margin-bottom: 1rem;
 }
+
+@media screen and (max-width: 480px) {
+    img#group-photo {
+        width: 100%;
+    }
+}
