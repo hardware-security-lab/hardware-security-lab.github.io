@@ -28,6 +28,15 @@ async function getAllPapers(groupAuthors) {
           // If the yearLeftTheGroup is defined, we check the constraint, otherwise not.
           if (author.yearJoinedTheGroup <= publicationYear
               && (!author.yearLeftTheGroup || author.yearLeftTheGroup >= publicationYear)) {
+            const authors = Array.isArray(hit.info.authors.author)
+              ? hit.info.authors.author.map(publicationAuthor => {
+                  const authorInGroup = groupAuthors.find(author => author.dblpName === publicationAuthor.text);
+                  return (authorInGroup && authorInGroup.displayName) || publicationAuthor.text;
+                })
+              : [hit.info.authors.author].map(publicationAuthor => {
+                  const authorInGroup = groupAuthors.find(author => author.dblpName === publicationAuthor.text);
+                  return (authorInGroup && authorInGroup.displayName) || publicationAuthor.text;
+                });
               papers.push(
               {
                   "title": hit.info.title,
@@ -37,16 +46,7 @@ async function getAllPapers(groupAuthors) {
                   "url": hit.info.url,
                   "doi": hit.info.doi,
                   "id": hit["@id"],
-                  "authors": hit.info.authors.author.map(publicationAuthor => {
-                    // If publicationAuthor is in groupAuthors, return their displayName
-                    // otherwise return their dblpName
-                    const authorInGroup = groupAuthors.find(author => author.dblpName === publicationAuthor.text);
-                    if (authorInGroup !== undefined && authorInGroup.displayName !== undefined) {
-                      // If there is no displayName, return the dblpName
-                      return authorInGroup.displayName; 
-                    }
-                    return publicationAuthor.text;
-                  }),
+                  "authors": authors,
               });        
           }
       });

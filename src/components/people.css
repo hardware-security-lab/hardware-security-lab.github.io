@@ -38,7 +38,6 @@ div.person-photo-container {
 p.person-name {
     color: #252525 !important;
     font-family: 'Montserrat';
-    text-transform: capitalize;
     width: 100%;
 }
 
