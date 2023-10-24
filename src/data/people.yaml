@@ -31,6 +31,10 @@ Students:
   yearJoinedTheGroup: 2022
   email: plefforge3@gatech.edu
   website: 'https://slefforge.github.io'
+- dblpName: Stephan van Schaik
+  yearJoinedTheGroup: 2021
+  email: stephvs@umich.edu
+  website: 'https://codentium.com/about'
 - dblpName: Pradyumna Shome
   yearJoinedTheGroup: 2022
   email: pradyumna.shome@gatech.edu
@@ -43,10 +47,6 @@ Students:
   yearJoinedTheGroup: 2022
   email: zeezooryu@gatech.edu
   website: 'https://zeezooryu.dev'
-- dblpName: Stephan van Schaik
-  yearJoinedTheGroup: 2021
-  email: stephvs@umich.edu
-  website: 'https://synkhronix.com'
 - dblpName: Walter Wang
   yearJoinedTheGroup: 2018
   email: walwan@gatech.edu
