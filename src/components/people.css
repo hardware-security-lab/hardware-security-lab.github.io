@@ -49,9 +49,9 @@ p.person-email {
 }
 
 @media screen and (max-width: 480px) {
-    section#people section.people-section > div {
-        grid-template-columns: repeat(1, 100%);
-        width: 100%;
+    div.people-category-list {
+        grid-template-columns: repeat(3, 25rem);
+        align-items: center;
     }
 
     section#people img.person-photo {

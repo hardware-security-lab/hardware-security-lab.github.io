@@ -43,7 +43,6 @@ const emailMangle = (email) => {
     return parts[0] + " [at] " + parts[1];
 }
 
-
 const ProfilePhoto = props => {
     const person = props.person;
     const website = person.website !== undefined && person.website !== "" ? person.website : "/";
@@ -58,6 +57,8 @@ const ProfilePhoto = props => {
         photoPath = "/images/people/" + personDblpName.replaceAll(" ", "-") + ".webp";
         personName = person.dblpName;
     }
+
+    const firstPositionAfterGraduatingOrNull = person.firstPositionAfterGraduating !== null ? <p className="person-first-position-after-graduating">First Position: {person.firstPositionAfterGraduating}</p> : null;
     
     return <div className="person-container">
         <div className="person-photo-container">
@@ -67,6 +68,7 @@ const ProfilePhoto = props => {
             <p className="person-name">{personName}</p>
             <p className="person-email">{emailMangle(person.email)}</p>
             <p className="person-website"><a href={website}>Website</a></p>
+            { firstPositionAfterGraduatingOrNull }
         </div>
     </div>;
 }

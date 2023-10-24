@@ -3,12 +3,17 @@ Faculty:
   displayName: Daniel Genkin
   email: genkin@gatech.edu
   website: 'https://faculty.cc.gatech.edu/~genkin'
+  yearJoinedTheGroup: 2014
 Post-Doctoral Researchers: []
 Students:
-- dblpName: Stephan van Schaik
-  yearJoinedTheGroup: 2021
-  email: stephvs@umich.edu
-  website: 'https://synkhronix.com'
+- dblpName: Jalen Chuang
+  yearJoinedTheGroup: 2022
+  email: jchuang9@gatech.edu
+  website: 'https://gt.rsp.rip'
+- dblpName: Byeongyong Go
+  yearJoinedTheGroup: 2022
+  email: bygo@gatech.edu
+  website: 'https://bygo7.github.io'
 - dblpName: Ingab Kang
   yearJoinedTheGroup: 2022
   email: igkang@umich.edu
@@ -22,6 +27,10 @@ Students:
   yearJoinedTheGroup: 2019
   email: kamadan@gatech.edu
   website: 'https://www.linkedin.com/in/nureddin-kamadan'
+- dblpName: Sam Lefforge
+  yearJoinedTheGroup: 2022
+  email: plefforge3@gatech.edu
+  website: 'https://slefforge.github.io'
 - dblpName: Pradyumna Shome
   yearJoinedTheGroup: 2022
   email: pradyumna.shome@gatech.edu
@@ -30,26 +39,18 @@ Students:
   yearJoinedTheGroup: 2020
   email: htaneja3@gatech.edu
   website: 'https://hritwik567.github.io'
-- dblpName: Walter Wang
-  yearJoinedTheGroup: 2018
-  email: walwan@gatech.edu
-  website: 'https://www.linkedin.com/in/walter-w/'
-- dblpName: Jalen Chuang
-  yearJoinedTheGroup: 2022
-  email: jchuang9@gatech.edu
-  website: 'https://gt.rsp.rip'
 - dblpName: Zeezoo Ryu
   yearJoinedTheGroup: 2022
   email: zeezooryu@gatech.edu
   website: 'https://zeezooryu.dev'
-- dblpName: Byeongyong Go
-  yearJoinedTheGroup: 2022
-  email: bygo@gatech.edu
-  website: 'https://bygo7.github.io'
-- dblpName: Sam Lefforge
-  yearJoinedTheGroup: 2022
-  email: plefforge3@gatech.edu
-  website: 'https://slefforge.github.io'
+- dblpName: Stephan van Schaik
+  yearJoinedTheGroup: 2021
+  email: stephvs@umich.edu
+  website: 'https://synkhronix.com'
+- dblpName: Walter Wang
+  yearJoinedTheGroup: 2018
+  email: walwan@gatech.edu
+  website: 'https://www.linkedin.com/in/walter-w/'
 Close Collaborators:
 - dblpName: Youssef Tobah
   email: ytobah@umich.edu
@@ -61,3 +62,4 @@ Alumni:
   yearLeftTheGroup: 2023
   email: andrew@cs.unc.edu
   website: 'https://andrewkwong.org'
+  firstPositionAfterGraduating: Assistant Professor, University of North Carolina at Chapel Hill
