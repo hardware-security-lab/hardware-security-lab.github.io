@@ -16,7 +16,7 @@ import people from "../data/people.yaml";
 async function getAllPapers(groupAuthors) {
   const paperListPerAuthor = await Promise.all(groupAuthors.map(async author => {
       const dblpNameWithUnderscores = author.dblpName.replace(/ /g,"_");
-      const response = await fetch("https://dblp.org/search/publ/api?q=author%3A" + dblpNameWithUnderscores + "%3Ah=250%3Aformat=json");
+      const response = await fetch("https://dblp.org/search/publ/api?q=author%3A" + dblpNameWithUnderscores + "%3A&h=250&format=json");
       const responseJson = await response.json();
       const hits = responseJson.result.hits.hit;
       let papers = [];
