@@ -28,14 +28,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             }
           }
         }
-        tagsGroup: allMarkdownRemark(
-          limit: 2000
-          filter: { fields: { contentType: { eq: "posts" } } }
-        ) {
-          group(field: frontmatter___tags) {
-            fieldValue
-          }
-        }
       }
     `
   );
@@ -48,41 +40,11 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
     return;
   }
 
-  const tags = result.data.tagsGroup.group;
   const allMarkdownNodes = result.data.allMarkdownRemark.nodes;
-
-  const blogMarkdownNodes = allMarkdownNodes.filter(
-    (node) => node.fields.contentType === `posts`
-  );
 
   const pageMarkdownNodes = allMarkdownNodes.filter(
     (node) => node.fields.contentType === `pages`
   );
-
-  if (blogMarkdownNodes.length > 0) {
-    blogMarkdownNodes.forEach((node, index) => {
-      let prevSlug = null;
-      let nextSlug = null;
-
-      if (index > 0) {
-        prevSlug = blogMarkdownNodes[index - 1].fields.slug;
-      }
-
-      if (index < blogMarkdownNodes.length - 1) {
-        nextSlug = blogMarkdownNodes[index + 1].fields.slug;
-      }
-
-      createPage({
-        path: `${node.fields.slug}`,
-        component: path.resolve(`./src/templates/post-template.js`),
-        context: {
-          slug: `${node.fields.slug}`,
-          prevSlug: prevSlug,
-          nextSlug: nextSlug,
-        },
-      });
-    });
-  }
 
   if (pageMarkdownNodes.length > 0) {
     pageMarkdownNodes.forEach((node) => {
@@ -99,16 +61,6 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
       }
     });
   }
-
-  tags.forEach((tag) => {
-    createPage({
-      path: `/tags/${toKebabCase(tag.fieldValue)}/`,
-      component: path.resolve(`./src/templates/tags-template.js`),
-      context: {
-        tag: tag.fieldValue,
-      },
-    });
-  });
 };
 
 exports.onCreateNode = ({ node, actions, getNode }) => {
@@ -127,14 +79,6 @@ exports.onCreateNode = ({ node, actions, getNode }) => {
       name: `contentType`,
       value: fileNode.sourceInstanceName,
     });
-
-    if (fileNode.sourceInstanceName === 'posts') {
-      createNodeField({
-        name: `slug`,
-        node,
-        value: `/blog${relativeFilePath}`,
-      });
-    }
 
     if (fileNode.sourceInstanceName === 'pages') {
       createNodeField({

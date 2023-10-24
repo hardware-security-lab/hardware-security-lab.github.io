@@ -11,7 +11,7 @@ const PeopleList = (props) => {
     return <section className="major" id="people">
         <h2>People</h2>
         <br></br>
-        <div className="columns">
+        <div className="people-category-section-list">
             {allSections}
         </div>
     </section>;
@@ -30,9 +30,9 @@ const PeopleListSection = (props) => {
         return <ProfilePhoto key={index} person={person}/>
     });
 
-    return <section id="people-categories">
+    return <section id="people-category">
             <h3>{sectionName}</h3>
-            <div className="columns">
+            <div className="people-category-list">
                 {profilePhotos}
             </div>
         </section>;

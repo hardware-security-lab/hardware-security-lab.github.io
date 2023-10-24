@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import PeopleList from '../components/people.js';
 import ServerSection from '../components/server-section.js';
 import ResearchComponent from '../components/research-component.js';
-import groupPhoto from "../../static/images/group_photo.jpg";
+import groupPhoto from "../../static/images/group_photo_fall_2023.webp";
 
 const HomePage = ({ data }) => {
   const intro = data.markdownRemark.html;

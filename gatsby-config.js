@@ -5,16 +5,16 @@ module.exports = {
       name: `Hardware Security Lab`,
       summary: `Research in secure hardware design, microarchitectural side-channel attacks, and applied cryptography, at Georgia Institute of Technology.`,
     },
-    openGraphImage: `open-graph-image.png`,
-    description: `A minimal & beautiful gatsby personal blog starter with a nice glassmorphism UI.`,
-    siteUrl: `https://gatsbyglass.netlify.app`,
+    openGraphImage: `static/images/group_photo_fall_2023.webp`,
+    description: `Research in secure hardware design, microarchitectural side-channel attacks, and applied cryptography, at Georgia Institute of Technology.`,
+    siteUrl: `https://architecture.fail`,
     social: {
-      twitter: `yinkakun`,
+      github: `hardware-security-lab`
     },
     socialLinks: [
       {
         name: "github",
-        url: "https://github.com",
+        url: "https://github.com/hardware-security-lab",
       },
     ],
   },
@@ -23,26 +23,11 @@ module.exports = {
     `gatsby-plugin-image`,
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
-    "gatsby-plugin-use-dark-mode",
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: `media`,
-        path: `${__dirname}/static/media`,
-      },
-    },
     {
       resolve: "gatsby-source-filesystem",
       options: {
         name: "pages",
         path: `${__dirname}/content/pages`,
-      },
-    },
-    {
-      resolve: "gatsby-source-filesystem",
-      options: {
-        name: "posts",
-        path: `${__dirname}/content/posts`,
       },
     },
     {
@@ -81,59 +66,6 @@ module.exports = {
         publicPath: "admin",
         htmlTitle: "Content Manager",
         includeRobots: false,
-      },
-    },
-    {
-      resolve: `gatsby-plugin-feed`,
-      options: {
-        query: `
-          {
-            site {
-              siteMetadata {
-                title
-                description
-                siteUrl
-                site_url: siteUrl
-              }
-            }
-          }
-        `,
-        feeds: [
-          {
-            serialize: ({ query: { site, allMarkdownRemark } }) => {
-              return allMarkdownRemark.nodes.map((node) => {
-                return Object.assign({}, node.frontmatter, {
-                  description: node.excerpt,
-                  date: node.frontmatter.date,
-                  url: site.siteMetadata.siteUrl + node.fields.slug,
-                  guid: site.siteMetadata.siteUrl + node.fields.slug,
-                  custom_elements: [{ "content:encoded": node.html }],
-                });
-              });
-            },
-            query: `
-              {
-                allMarkdownRemark(
-                  sort: { order: DESC, fields: [frontmatter___date] },
-                ) {
-                  nodes {
-                    excerpt
-                    html
-                    fields {
-                      slug
-                    }
-                    frontmatter {
-                      title
-                      date
-                    }
-                  }
-                }
-              }
-            `,
-            output: "/rss.xml",
-            title: `Gatsby Glass RSS Feed`,
-          },
-        ],
       },
     },
     {

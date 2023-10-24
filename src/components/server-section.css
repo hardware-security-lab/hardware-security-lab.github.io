@@ -1,12 +1,12 @@
-img#gallery {
-    height: 25rem;
-    text-align: center;
-    padding: 1rem;
-}
-
 #server-section-images {
     display: flex;
     justify-content: center;
+}
+
+img.gallery {
+    height: 25rem;
+    text-align: center;
+    padding: 1rem;
 }
 
 @media screen and (max-width: 769px) {
