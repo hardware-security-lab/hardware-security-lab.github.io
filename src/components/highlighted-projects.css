@@ -10,6 +10,8 @@ section#highlighted-projects #highlighted-projects-container {
     display: grid;
     grid-template-columns: repeat(5, 15rem);
     margin: 2rem;
+    justify-items: center; /* Horizontally center items within the cell */
+    align-items: center; /* Vertically center items within the cell */
 }
 
 section#highlighted-projects img.highlighted-project-image {
@@ -20,4 +22,8 @@ section#highlighted-projects img.highlighted-project-image {
 
 section#highlighted-projects img.highlighted-project-title {
     margin: auto;
+}
+
+section#highlighted-projects img.highlighted-project-image img.programmatic-caption {
+    height: 110px;
 }

@@ -13,12 +13,12 @@ const PeopleList = (props) => {
         <br></br>
         <div className="people-category-section-list">
             {allSections}
+            <h3>Join Us</h3>
+            <p>
+                We are looking for excellent students interested in working with us.
+                If that is you, drop us a line at <a href="mailto://genkin@gatech.edu">genkin@gatech.edu</a>.
+            </p>
         </div>
-        <h3>Join Us</h3>
-        <p>
-            We are looking for excellent students interested in working with us.
-            If that is you, drop us a line at <a href="mailto://genkin@gatech.edu">genkin@gatech.edu</a>.
-        </p>
     </section>;
 }
 export default PeopleList;
@@ -64,7 +64,7 @@ const ProfilePhoto = props => {
     }
 
     const firstPositionAfterGraduatingOrNull = person.firstPositionAfterGraduating !== undefined 
-        ? <pre className="person-first-position-after-graduating">{person.firstPositionAfterGraduating}</pre> 
+        ? <div className="person-first-position-after-graduating">{person.firstPositionAfterGraduating}</div> 
         : null;
     
     return <div className="person-container">

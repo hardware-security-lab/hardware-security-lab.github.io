@@ -31,3 +31,6 @@
 - url: https://sgx.fail/
   title: SGX.Fail
   displayTitle: false
+- url: https://ileakage.com
+  title: iLeakage
+  displayTitle: false
