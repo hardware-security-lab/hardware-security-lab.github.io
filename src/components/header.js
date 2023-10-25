@@ -6,11 +6,6 @@ import ThemeSwitch from "./theme-switch";
 import { useStaticQuery, graphql } from "gatsby";
 
 const HEADER_NAV_ITEM = [
-  {
-    label: "Join Us",
-    url: "/join-us",
-    isExternal: false,
-  },
 ];
 
 const Header = () => {

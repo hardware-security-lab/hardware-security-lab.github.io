@@ -34,14 +34,22 @@ async function getAllPapers(groupAuthors) {
           ? hit.info.authors.author
           : [hit.info.authors.author])
           .map(publicationAuthor => {
-            const authorInGroup = groupAuthors.find(author => author.dblpName === publicationAuthor.text);
-            return (authorInGroup && authorInGroup.displayName) || publicationAuthor.text;
+            // Split the author by spaces, and if any element has only numbers, remove it
+            const authorNameSplit = publicationAuthor.split(' ');
+
+            // Filter out elements with only numbers
+            const filteredAuthorArray = authorNameSplit.filter(element => !/^\d+$/.test(element));
+
+            // Join the filtered elements back into a single string
+            return filteredAuthorArray.join(' ');
           });
+
+        const paperVenue = hit.info.venue.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
 
         return {
           title: hit.info.title,
           year: Number(hit.info.year),
-          venue: hit.info.venue,
+          venue: paperVenue,
           type: hit.info.type,
           url: hit.info.url,
           doi: hit.info.doi,
@@ -60,10 +68,13 @@ async function getAllPapers(groupAuthors) {
   const filteredPapers = allPapers.filter(paper => {
     let doi = paper.doi;
     let id = paper.id;
-    let title = paper.title;
+    let title = paper.title.toLowerCase();
+    let paperType = paper.type;
     const isPaperDuplicate = seenPaperDOIs.hasOwnProperty(doi) || seenPaperIDs.hasOwnProperty(id) || seenPaperTitles.hasOwnProperty(title);
     const isDanielGenkinACoAuthor = paper.authors.includes("Daniel Genkin") || paper.authors.includes("Genkin, Daniel");
-    if (isPaperDuplicate || !isDanielGenkinACoAuthor) {
+    // Only allow conference or journal papers
+    const isPeerReviewed = paperType === "Conference and Workshop Papers" || paperType === "Journal Articles"; 
+    if (isPaperDuplicate || !isDanielGenkinACoAuthor || !isPeerReviewed) {
       return false;
     }
     if (doi !== undefined) {
