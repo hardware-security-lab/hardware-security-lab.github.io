@@ -44,7 +44,10 @@ async function getAllPapers(groupAuthors) {
             return filteredAuthorArray.join(' ');
           });
 
-        const paperVenue = hit.info.venue.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+        let paperVenue = "";
+        if (hit.info.venue !== undefined) {
+          paperVenue = hit.info.venue.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
+        }
 
         return {
           title: hit.info.title,

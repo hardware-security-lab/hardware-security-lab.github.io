@@ -14,8 +14,11 @@ const PeopleList = (props) => {
         <div className="people-category-section-list">
             {allSections}
         </div>
-        We are looking for excellent students interested in working with us.
-        If that is you, drop us a line at <a href="mailto://genkin@gatech.edu">genkin@gatech.edu</a>.
+        <h3>Join Us</h3>
+        <p>
+            We are looking for excellent students interested in working with us.
+            If that is you, drop us a line at <a href="mailto://genkin@gatech.edu">genkin@gatech.edu</a>.
+        </p>
     </section>;
 }
 export default PeopleList;
