@@ -1,17 +1,18 @@
 section#highlighted-projects section.highlighted-project {
     display: flex;
     flex-flow: row wrap;
-    margin: 1rem;
+    margin: 2rem;
 }
 
 section#highlighted-projects #highlighted-projects-container {
-    display: flex;
-    flex-flow: column wrap;
+    display: grid;
+    grid-template-columns: repeat(5, 15rem);
+    margin: 2rem;
 }
 
 section#highlighted-projects img.highlighted-project-image {
     height: 150px;
-    max-width: 200px;
+    width: 150px;
 }
 
 section#highlighted-projects img.highlighted-project-title {
