@@ -13,8 +13,7 @@ section#highlighted-projects #highlighted-projects-container {
     display: flex;
     flex-flow: row wrap;
     margin: 2rem;
-    justify-items: center; /* Horizontally center items within the cell */
-    align-items: center; /* Vertically center items within the cell */
+    justify-content: center; /* Horizontally center items within the cell */
 }
 
 section#highlighted-projects img.highlighted-project-image {
