@@ -1,5 +1,5 @@
-import highlightedProjectData from './highlighted-projects.yaml';
-import  './highlighed-projects.css';
+import highlightedProjectData from '../data/highlighted-projects.yaml';
+import './highlighed-projects.css';
 
 const HighlightedProjects = props => {
     const highlightedProjects = highlightedProjectData.map(project => <HighlightedProject key={project.url} project={project}/>);
@@ -10,13 +10,13 @@ const HighlightedProjects = props => {
 }
 
 const HighlightedProject = props => {
-    const projectInfo = props.project;
-    // Projects with titles in the logo already won't have a titleText
-    const projectTitle = projectInfo.title ? <a href={projectInfo.url}>{projectInfo.title}</a> : null;  
+    const projectInfo = props.project;  
     const projectImagePath = projectInfo.title.toLowerCase().replaceAll(" ", "-") + ".svg";
     return <section className="highlighted-project">
-        <img className="highlighted-project-image" src={projectImagePath}/>
-        { projectTitle }
+        <a href={projectInfo.url}>
+            <img className="highlighted-project-image" src={projectImagePath}/>
+            { projectInfo.title }
+        </a>
     </section>
 }
 
