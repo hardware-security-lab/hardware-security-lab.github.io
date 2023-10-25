@@ -6,11 +6,12 @@ section#highlighted-projects section.highlighted-project {
     font-weight: 600;
     width: 150px;
     height: 150px;
+    margin: 1.5rem;
 }
 
 section#highlighted-projects #highlighted-projects-container {
-    display: grid;
-    grid-template-columns: repeat(5, 15rem);
+    display: flex;
+    flex-flow: row wrap;
     margin: 2rem;
     justify-items: center; /* Horizontally center items within the cell */
     align-items: center; /* Vertically center items within the cell */
