@@ -16,7 +16,7 @@ const HighlightedProject = props => {
     const projectInfo = props.project;
     const projectImagePath = "/images/highlighted-projects/" + projectInfo.title.toLowerCase().replaceAll(" ", "-") + ".svg";
     const projectTitle = projectInfo.displayTitle ? projectInfo.title : null;
-    const imageClassname = "highlighted-project-image " + projectInfo.displayTitle ? "programmatic-title" : "";
+    const imageClassname = "highlighted-project-image " + (projectInfo.displayTitle ? "programmatic-title" : "");
     return <section className="highlighted-project">
         <a style={projectInfo.color !== undefined ? {color: projectInfo.color} : {}} className="highlighted-project-title" href={projectInfo.url}>
             <img className={imageClassname} src={projectImagePath}/>

@@ -4,6 +4,8 @@ section#highlighted-projects section.highlighted-project {
     text-align: center;
     font-size: 1.1em;
     font-weight: 600;
+    width: 150px;
+    height: 150px;
 }
 
 section#highlighted-projects #highlighted-projects-container {
