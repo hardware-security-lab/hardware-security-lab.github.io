@@ -47,6 +47,10 @@ p.person-email {
     width: 100%;
 }
 
+span.person-first-position-after-graduating {
+    white-space: pre-wrap;
+}
+
 @media screen and (max-width: 480px) {
     div.people-category-list {
         grid-template-columns: repeat(3, 25rem);

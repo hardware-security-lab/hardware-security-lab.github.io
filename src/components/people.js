@@ -63,7 +63,9 @@ const ProfilePhoto = props => {
         personName = person.dblpName;
     }
 
-    const firstPositionAfterGraduatingOrNull = person.firstPositionAfterGraduating !== undefined ? <p className="person-first-position-after-graduating">{person.firstPositionAfterGraduating}</p> : null;
+    const firstPositionAfterGraduatingOrNull = person.firstPositionAfterGraduating !== undefined 
+        ? <span className="person-first-position-after-graduating">{person.firstPositionAfterGraduating}</span> 
+        : null;
     
     return <div className="person-container">
         <div className="person-photo-container">
