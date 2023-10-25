@@ -9,6 +9,11 @@ section#highlighted-projects #highlighted-projects-container {
     flex-flow: column wrap;
 }
 
-img#highlighted-project-image {
+section#highlighted-projects img.highlighted-project-image {
     height: 150px;
+    max-width: 200px;
+}
+
+section#highlighted-projects img.highlighted-project-title {
+    margin: auto;
 }
