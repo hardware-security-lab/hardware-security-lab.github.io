@@ -63,8 +63,11 @@ const ProfilePhoto = props => {
         personName = person.dblpName;
     }
 
-    const firstPositionAfterGraduatingOrNull = person.firstPositionAfterGraduating !== undefined 
-        ? <div className="person-first-position-after-graduating">{person.firstPositionAfterGraduating}</div> 
+    const firstPositionTitleAfterGraduatingOrNull = person.firstPositionTitleAfterGraduating !== undefined 
+        ? <div className="person-first-position-title-after-graduating">{person.firstPositionTitleAfterGraduating}</div> 
+        : null;
+    const firstPositionInstitutionAfterGraduatingOrNull = person.firstPositionInstitutionAfterGraduating !== undefined
+        ? <div className="person-first-position-institution-after-graduating">{person.firstPositionInstitutionAfterGraduating}</div>
         : null;
     
     return <div className="person-container">
@@ -75,7 +78,8 @@ const ProfilePhoto = props => {
             <p className="person-name">{personName}</p>
             <p className="person-email">{emailMangle(person.email)}</p>
             <p className="person-website"><a href={website}>Website</a></p>
-            { firstPositionAfterGraduatingOrNull }
+            { firstPositionTitleAfterGraduatingOrNull }
+            { firstPositionInstitutionAfterGraduatingOrNull }
         </div>
     </div>;
 }
