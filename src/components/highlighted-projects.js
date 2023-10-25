@@ -1,3 +1,4 @@
+import React from 'react';
 import highlightedProjectData from '../data/highlighted-projects.yaml';
 import './highlighted-projects.css';
 
