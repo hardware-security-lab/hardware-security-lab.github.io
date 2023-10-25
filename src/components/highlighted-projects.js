@@ -5,7 +5,7 @@ import './highlighted-projects.css';
 const HighlightedProjects = props => {
     const highlightedProjects = highlightedProjectData.map(project => <HighlightedProject key={project.url} project={project}/>);
     return <section id="highlighted-projects">
-        <h3>Highlighted Projects</h3>
+        <h2>Highlighted Projects</h2>
         <section id="highlighted-projects-container">
             { highlightedProjects }
         </section>
