@@ -15,7 +15,7 @@
 - url: https://rambleed.com/
   title: RAMBleed
   color: '#31A5BF'
-  titleSize: large
+  titleSize: x-large
   displayTitle: true
 - url: https://lightcommands.com/
   title: Light Commands
