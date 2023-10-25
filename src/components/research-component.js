@@ -35,7 +35,7 @@ async function getAllPapers(groupAuthors) {
           : [hit.info.authors.author])
           .map(publicationAuthor => {
             // Split the author by spaces, and if any element has only numbers, remove it
-            const authorNameSplit = publicationAuthor.split(' ');
+            const authorNameSplit = publicationAuthor.text.split(' ');
 
             // Filter out elements with only numbers
             const filteredAuthorArray = authorNameSplit.filter(element => !/^\d+$/.test(element));
@@ -51,7 +51,7 @@ async function getAllPapers(groupAuthors) {
           year: Number(hit.info.year),
           venue: paperVenue,
           type: hit.info.type,
-          url: hit.info.url,
+          url: hit.info.ee || hit.info.url,
           doi: hit.info.doi,
           id: hit["@id"],
           authors: currentPaperAuthors,
