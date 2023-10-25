@@ -14,6 +14,10 @@ Students:
   yearJoinedTheGroup: 2022
   email: bygo@gatech.edu
   website: 'https://bygo7.github.io'
+- dblpName: Nureddin Kamadan
+  yearJoinedTheGroup: 2019
+  email: kamadan@gatech.edu
+  website: 'https://www.linkedin.com/in/nureddin-kamadan'
 - dblpName: Ingab Kang
   yearJoinedTheGroup: 2022
   email: igkang@umich.edu
@@ -23,14 +27,14 @@ Students:
   yearJoinedTheGroup: 2022
   email: nosajmik@gatech.edu
   website: 'https://jasonkim.page'
-- dblpName: Nureddin Kamadan
-  yearJoinedTheGroup: 2019
-  email: kamadan@gatech.edu
-  website: 'https://www.linkedin.com/in/nureddin-kamadan'
 - dblpName: Sam Lefforge
   yearJoinedTheGroup: 2022
   email: plefforge3@gatech.edu
   website: 'https://slefforge.github.io'
+- dblpName: Zeezoo Ryu
+  yearJoinedTheGroup: 2022
+  email: zeezooryu@gatech.edu
+  website: 'https://zeezooryu.dev'
 - dblpName: Stephan van Schaik
   yearJoinedTheGroup: 2021
   email: stephvs@umich.edu
@@ -43,10 +47,6 @@ Students:
   yearJoinedTheGroup: 2020
   email: htaneja3@gatech.edu
   website: 'https://hritwik567.github.io'
-- dblpName: Zeezoo Ryu
-  yearJoinedTheGroup: 2022
-  email: zeezooryu@gatech.edu
-  website: 'https://zeezooryu.dev'
 - dblpName: Walter Wang
   yearJoinedTheGroup: 2018
   email: walwan@gatech.edu
