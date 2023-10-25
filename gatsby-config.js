@@ -34,8 +34,6 @@ module.exports = {
         pluginConfig: {
           // Puts tracking script in the head instead of the body
           head: true,
-          // Defaults to https://www.googletagmanager.com
-          origin: "https://architecture.fail",
           // Delays processing pageview events on route update (in milliseconds)
           delayOnRouteUpdate: 0,
         },
