@@ -48,6 +48,12 @@ async function getAllPapers(groupAuthors) {
         if (hit.info.venue !== undefined) {
           paperVenue = hit.info.venue.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
         }
+        
+        if (paperVenue === "CCS") {
+          paperVenue = "ACM Conference on Computer and Communications Security (CCS)";
+        } else if (paperVenue === "SP") {
+          paperVenue = "IEEE Symposium on Security and Privacy (Oakland)";
+        }
 
         return {
           title: hit.info.title,
