@@ -2,7 +2,7 @@ section#highlighted-projects section.highlighted-project {
     display: flex;
     flex-flow: row wrap;
     text-align: center;
-    font-size: 1.1em;
+    font-size: 0.8em;
     font-weight: 600;
     width: 150px;
     height: 150px;
@@ -26,6 +26,6 @@ section#highlighted-projects img.highlighted-project-title {
     margin: auto;
 }
 
-section#highlighted-projects img.highlighted-project-image img.programmatic-title {
+section#highlighted-projects img.highlighted-project-image.programmatic-title {
     height: 110px;
 }
