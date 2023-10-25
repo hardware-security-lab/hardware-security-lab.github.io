@@ -6,6 +6,7 @@ import PeopleList from '../components/people.js';
 import ServerSection from '../components/server-section.js';
 import ResearchComponent from '../components/research-component.js';
 import groupPhoto from "../../static/images/group_photo_fall_2023.webp";
+import HighlightedProjects from '../components/highlighted-projects';
 
 const HomePage = ({ data }) => {
   const intro = data.markdownRemark.html;
@@ -25,6 +26,7 @@ const HomePage = ({ data }) => {
       />
 
       <PeopleList/>
+      <HighlightedProjects/>
       <ServerSection/>
       <ResearchComponent/>
     </Layout>
