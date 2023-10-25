@@ -17,7 +17,7 @@ const HighlightedProject = props => {
     const projectImagePath = "/images/highlighted-projects/" + projectInfo.title.toLowerCase().replaceAll(" ", "-") + ".svg";
     const projectTitle = projectInfo.displayTitle ? projectInfo.title : null;
     return <section className="highlighted-project">
-        <a className="highlighted-project-title" href={projectInfo.url}>
+        <a style={projectInfo.color !== undefined ? "color: " + projectInfo.color + ";" : ''} className="highlighted-project-title" href={projectInfo.url}>
             <img className="highlighted-project-image" src={projectImagePath}/>
             { projectTitle }
         </a>

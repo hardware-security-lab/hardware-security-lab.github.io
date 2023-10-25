@@ -1,30 +1,32 @@
 - url: https://meltdownattack.com/
   title: Meltdown
-  displayTitle: true
+  displayTitle: false
 - url: https://spectreattack.com/
   title: Spectre
-  displayTitle: true
+  displayTitle: false
 - url: https://foreshadowattack.eu/
   title: Foreshadow
-  displayTitle: true
+  displayTitle: false
 - url: https://mdsattacks.com/
   title: Microarchitectural Data Sampling (MDS)
-  displayTitle: false
+  displayTitle: true
+  color: '#482E90'
 - url: https://rambleed.com/
   title: RAMBleed
   displayTitle: true
+  color: '#D94E41'
 - url: https://lightcommands.com/
   title: Light Commands
   displayTitle: false
 - url: https://lviattack.eu/
   title: Load Value Injection (LVI)
-  displayTitle: true
+  displayTitle: false
 - url: https://cacheoutattack.com/
   title: CacheOut
-  displayTitle: true
+  displayTitle: false
 - url: https://www.spookjs.com/
   title: Spook.js
-  displayTitle: true
+  displayTitle: false
 - url: https://sgx.fail/
   title: SGX.Fail
   displayTitle: false
