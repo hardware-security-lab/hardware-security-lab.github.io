@@ -1,5 +1,5 @@
 import highlightedProjectData from '../data/highlighted-projects.yaml';
-import './highlighed-projects.css';
+import './highlighted-projects.css';
 
 const HighlightedProjects = props => {
     const highlightedProjects = highlightedProjectData.map(project => <HighlightedProject key={project.url} project={project}/>);
