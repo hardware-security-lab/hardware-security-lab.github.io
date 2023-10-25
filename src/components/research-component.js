@@ -50,7 +50,7 @@ async function getAllPapers(groupAuthors) {
               });        
           }
       });
-      return papers;
+      return Promise(papers);
   }));
   const allPapers = paperListPerAuthor.flatMap(paper => paper);
   let seenPaperDOIs = {};
