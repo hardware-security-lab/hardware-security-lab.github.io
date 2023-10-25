@@ -9,133 +9,137 @@ import people from "../data/people.yaml";
 //   yearJoinedTheGroup :: int - The year this person joined the group (to exclude publications from before)
 //   yearLeftTheGroup :: int - The year this person left the group (to exclude publications from after, if it is defined)
 async function getAllPapers(groupAuthors) {
-    const group = [groupAuthors[0]];
-    const paperListPerAuthor = await Promise.all(group.map(async author => {
-        const dblpNameWithUnderscores = author.dblpName.replace(/ /g, "_");
-        const response = await fetch(`https://dblp.org/search/publ/api?q=author%3A${dblpNameWithUnderscores}%3A&h=250&format=json`);
-        const responseJson = await response.json();
-        const hits = responseJson.result.hits.hit;
 
-        if (!hits) {
-            return [];
-        }
+  const paperListPerAuthor = [];
 
-        const papers = hits
-            .filter(hit => {
-                const publicationYear = parseInt(hit.info.year);
-                return author.yearJoinedTheGroup <= publicationYear &&
-                    (!author.yearLeftTheGroup || author.yearLeftTheGroup >= publicationYear);
-            })
-            .map(hit => {
-                const authors = (Array.isArray(hit.info.authors.author)
-                    ? hit.info.authors.author
-                    : [hit.info.authors.author])
-                    .map(publicationAuthor => {
-                        const authorInGroup = groupAuthors.find(author => author.dblpName === publicationAuthor.text);
-                        return (authorInGroup && authorInGroup.displayName) || publicationAuthor.text;
-                    });
+  for (const author of groupAuthors) {
+    const dblpNameWithUnderscores = author.dblpName.replace(/ /g, "_");
+    const response = await fetch(`https://dblp.org/search/publ/api?q=author%3A${dblpNameWithUnderscores}%3A&h=250&format=json`);
+    const responseJson = await response.json();
+    const hits = responseJson.result.hits.hit;
 
-                return {
-                    title: hit.info.title,
-                    year: Number(hit.info.year),
-                    venue: hit.info.venue,
-                    type: hit.info.type,
-                    url: hit.info.url,
-                    doi: hit.info.doi,
-                    id: hit["@id"],
-                    authors,
-                };
-            });
-            debugger;
-            return papers;
-    }));
-    const allPapers = [].concat(...paperListPerAuthor);
-    let seenPaperDOIs = {};
-    let seenPaperIDs = {};
-    let seenPaperTitles = {};
-    const filteredPapers = allPapers.filter(paper => {
-        let doi = paper.doi;
-        let id = paper.id;
-        let title = paper.title;
-        const isPaperDuplicate = seenPaperDOIs.hasOwnProperty(doi) || seenPaperIDs.hasOwnProperty(id) || seenPaperTitles.hasOwnProperty(title);
-        const isDanielGenkinACoAuthor = paper.authors.includes("Daniel Genkin") || paper.authors.includes("Genkin, Daniel");
-        if (typeof (doi) !== "undefined" || isPaperDuplicate || !isDanielGenkinACoAuthor) {
-            return false;
-        }
-        seenPaperDOIs[doi] = true;
-        seenPaperIDs[id] = true;
-        seenPaperTitles[title] = true;
-        return true;
-    });
-    filteredPapers.sort((paper1, paper2) => Number(paper2.year) - Number(paper1.year));
-    return filteredPapers;
+    if (!hits) {
+      paperListPerAuthor.push([]);
+      continue;
+    }
+
+    const papers = hits
+      .filter(hit => {
+        const publicationYear = parseInt(hit.info.year);
+        return author.yearJoinedTheGroup <= publicationYear &&
+          (!author.yearLeftTheGroup || author.yearLeftTheGroup >= publicationYear);
+      })
+      .map(hit => {
+        const authors = (Array.isArray(hit.info.authors.author)
+          ? hit.info.authors.author
+          : [hit.info.authors.author])
+          .map(publicationAuthor => {
+            const authorInGroup = groupAuthors.find(author => author.dblpName === publicationAuthor.text);
+            return (authorInGroup && authorInGroup.displayName) || publicationAuthor.text;
+          });
+
+        return {
+          title: hit.info.title,
+          year: Number(hit.info.year),
+          venue: hit.info.venue,
+          type: hit.info.type,
+          url: hit.info.url,
+          doi: hit.info.doi,
+          id: hit["@id"],
+          authors,
+        };
+      });
+
+    paperListPerAuthor.push(papers);
+  }
+
+  const allPapers = [].concat(...paperListPerAuthor);
+  let seenPaperDOIs = {};
+  let seenPaperIDs = {};
+  let seenPaperTitles = {};
+  const filteredPapers = allPapers.filter(paper => {
+    let doi = paper.doi;
+    let id = paper.id;
+    let title = paper.title;
+    const isPaperDuplicate = seenPaperDOIs.hasOwnProperty(doi) || seenPaperIDs.hasOwnProperty(id) || seenPaperTitles.hasOwnProperty(title);
+    const isDanielGenkinACoAuthor = paper.authors.includes("Daniel Genkin") || paper.authors.includes("Genkin, Daniel");
+    if (typeof (doi) !== "undefined" || isPaperDuplicate || !isDanielGenkinACoAuthor) {
+      return false;
+    }
+    seenPaperDOIs[doi] = true;
+    seenPaperIDs[id] = true;
+    seenPaperTitles[title] = true;
+    return true;
+  });
+  filteredPapers.sort((paper1, paper2) => Number(paper2.year) - Number(paper1.year));
+  return filteredPapers;
 }
 
 const ResearchList = (props) => {
-    const PublicationList = props.publications.map((publication) => {
-        return (
-            <ResearchListItem publication={publication}
-                key={publication.id}
-            />
-        );
-    });
+  const PublicationList = props.publications.map((publication) => {
+    return (
+      <ResearchListItem publication={publication}
+        key={publication.id}
+      />
+    );
+  });
 
-    return <StyledResearchList>{PublicationList}</StyledResearchList>;
+  return <StyledResearchList>{PublicationList}</StyledResearchList>;
 }
 
 
 const ResearchComponent = ({ data }) => {
-    // Use map to get a list of all authors in each key and store it in an array
-    const groupAuthors = Object.keys(people).flatMap(key => people[key]);
-    let [allPapers, setAllPapers] = useState([]);
+  // Use map to get a list of all authors in each key and store it in an array
+  const groupAuthors = Object.keys(people).flatMap(key => people[key]);
+  let [allPapers, setAllPapers] = useState([]);
 
-    useEffect(() => {
-        const fetchData = async () => {
-            let papers = await getAllPapers(groupAuthors);
-            setAllPapers(papers);
-        }
-        fetchData();
-    }, []);
+  useEffect(() => {
+    const fetchData = async () => {
+      let papers = await getAllPapers(groupAuthors);
+      setAllPapers(papers);
+    }
+    fetchData();
+  }, []);
 
-    return <section>
-        <h2>Research</h2>
-        <ResearchList publications={allPapers} />
-    </section>
+  return <section>
+    <h2>Research</h2>
+    <ResearchList publications={allPapers} />
+  </section>
 };
 
 function getAuthorListString(authorList) {
-    if (authorList.length === 0) {
-        return "";
-    } else if (authorList.length === 1) {
-        return authorList[0];
-    }
-    let authorListString = authorList[0];
-    authorList.slice(1, authorList.length - 1).forEach(author => {
-        authorListString += ", " + author;
-    });
-    authorListString += " and " + authorList[authorList.length - 1];
-    return authorListString;
+  if (authorList.length === 0) {
+    return "";
+  } else if (authorList.length === 1) {
+    return authorList[0];
+  }
+  let authorListString = authorList[0];
+  authorList.slice(1, authorList.length - 1).forEach(author => {
+    authorListString += ", " + author;
+  });
+  authorListString += " and " + authorList[authorList.length - 1];
+  return authorListString;
 }
 
 const ResearchListItem = (props) => {
-    const publication = props.publication;
-    return (
-        <StyledResearchListItem>
-            {/* <Tags ta  s={[publication.type]} /> */}
+  const publication = props.publication;
+  return (
+    <StyledResearchListItem>
+      {/* <Tags ta  s={[publication.type]} /> */}
 
-            <ResearchListTitle>
-                <Link to={publication.url}>{publication.title}</Link>
-            </ResearchListTitle>
-            <ResearchListExcerpt
-                dangerouslySetInnerHTML={{
-                    __html: getAuthorListString(publication.authors),
-                }}
-            />
+      <ResearchListTitle>
+        <Link to={publication.url}>{publication.title}</Link>
+      </ResearchListTitle>
+      <ResearchListExcerpt
+        dangerouslySetInnerHTML={{
+          __html: getAuthorListString(publication.authors),
+        }}
+      />
 
-            <span>{publication.venue} {publication.year}</span>
+      <span>{publication.venue} {publication.year}</span>
 
-        </StyledResearchListItem>
-    );
+    </StyledResearchListItem>
+  );
 };
 
 const StyledResearchList = styled.ul`
