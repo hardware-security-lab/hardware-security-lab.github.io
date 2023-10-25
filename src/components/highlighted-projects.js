@@ -15,10 +15,11 @@ const HighlightedProjects = props => {
 const HighlightedProject = props => {
     const projectInfo = props.project;  
     const projectImagePath = "/images/highlighted-projects/" + projectInfo.title.toLowerCase().replaceAll(" ", "-") + ".svg";
+    const projectTitle = projectInfo.displayTitle ? projectInfo.title : null;
     return <section className="highlighted-project">
         <a className="highlighted-project-title" href={projectInfo.url}>
             <img className="highlighted-project-image" src={projectImagePath}/>
-            { projectInfo.title }
+            { projectTitle }
         </a>
     </section>
 }
