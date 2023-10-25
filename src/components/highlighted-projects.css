@@ -29,3 +29,30 @@ section#highlighted-projects img.highlighted-project-title {
 section#highlighted-projects img.highlighted-project-image.programmatic-title {
     height: 110px;
 }
+
+@media screen and (max-width: 780px) {
+    section#highlighted-projects section.highlighted-project {
+        width: 15%;
+        justify-content: center;
+        align-content: baseline;
+    }
+    a.highlighted-project-title {
+        font-size: small;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    section#highlighted-projects section.highlighted-project {
+        width: 30%;
+        justify-content: center;
+        align-content: baseline;
+    }
+
+    section#highlighted-projects img.highlighted-project-image.programmatic-title {
+        height: 50%;
+    }
+
+    section#highlighted-projects #highlighted-projects-container {
+        margin: 0;
+    }
+}

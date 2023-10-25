@@ -1,6 +1,7 @@
 body {
     color: #4A4A4A !important;
     font-family: 'Work Sans', serif;
+    width: 100%;
 }
 
 div.people-category-list {
@@ -12,9 +13,8 @@ div.people-category-list {
 
 .person-container {
     display: flex;
-    flex-basis: 0;
-    flex-grow: 1;
     justify-items: left;
+    width: 1fr;
 }
 
 img.person-photo {
@@ -24,16 +24,20 @@ img.person-photo {
 }
 
 div.person-photo-container {
-    min-width: 150px;
+    /* min-width: 150px;
     max-width: 150px;
     height: 150px;
     margin-right: 2%;
-    margin-bottom: 2%;
+    margin-bottom: 2%; */
+    flex: 3;
+    margin-right: 0.5em;
+    margin-bottom: 0.5em;
 }
 
-.person-information {
+div.person-information {
     text-align: left;  
     text-decoration: none;
+    flex: 5;
 }
 
 p.person-name {
@@ -54,24 +58,33 @@ div.person-first-position-after-graduating {
 
 @media screen and (max-width: 480px) {
     div.people-category-list {
-        grid-template-columns: repeat(3, 25rem);
+        grid-template-columns: 1fr;
         align-items: center;
-    }
-
-    section#people img.person-photo {
-        width: 100%;
+        grid-gap: 2em;
     }
 
     section#people div.person-photo-container {
-        width: 8rem;
+        flex: 4;
     }
 
     section#people div.person-information {
         text-overflow: wrap;
+        flex: 6;
     }
+}
 
-    section#people p {
-        max-width: 12rem;
+@media screen and (min-width: 481px) and (max-width: 1280px) {
+    div.people-category-list {
+        grid-template-columns: repeat(2, 1fr);
+        align-items: center;
+    }
+    
+    section#people div.person-photo-container {
+        width: 8rem;
+    }
+    
+    section#people div.person-information {
+        text-overflow: wrap;
     }
 
     section#people-categories div.person-container {

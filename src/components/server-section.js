@@ -2,7 +2,7 @@ import React from 'react';
 import './server-section.css';
 
 const ServerSection = () => {
-    return <section className="major">
+    return <section id="servers" className="major">
         <h2>Servers</h2>
         <section id="server-section-images">
             <img className="gallery" src="/images/server_cluster.webp"></img>

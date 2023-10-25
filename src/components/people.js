@@ -13,11 +13,13 @@ const PeopleList = (props) => {
         <br></br>
         <div className="people-category-section-list">
             {allSections}
-            <h3>Join Us</h3>
-            <p>
-                We are looking for excellent students interested in working with us.
-                If that is you, drop us a line at <a href="mailto://genkin@gatech.edu">genkin@gatech.edu</a>.
-            </p>
+            <section className="minor people-category">
+                <h3>Join Us</h3>
+                <p>
+                    We are looking for excellent students interested in working with us.
+                    If that is you, drop us a line at <a href="mailto://genkin@gatech.edu">genkin@gatech.edu</a>.
+                </p>
+            </section>
         </div>
     </section>;
 }
@@ -35,7 +37,7 @@ const PeopleListSection = (props) => {
         return <ProfilePhoto key={index} person={person}/>
     });
 
-    return <section id="people-category">
+    return <section className="people-category">
             <h3>{sectionName}</h3>
             <div className="people-category-list">
                 {profilePhotos}

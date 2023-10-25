@@ -31,6 +31,22 @@ section.major {
     margin-bottom: 2rem;
 }
 
+section.minor h1,h2,h3 {
+    margin-bottom: 1rem;
+}
+
+@media screen and (max-width: 1280px) {
+    header {
+        margin: auto;
+    }
+    section-minor {
+        width: 100%;
+    }
+
+    img#group-photo {
+        width: 70%;
+    }
+}
 @media screen and (max-width: 480px) {
     img#group-photo {
         width: 100%;
