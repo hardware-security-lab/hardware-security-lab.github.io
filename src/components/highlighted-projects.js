@@ -6,13 +6,15 @@ const HighlightedProjects = props => {
     const highlightedProjects = highlightedProjectData.map(project => <HighlightedProject key={project.url} project={project}/>);
     return <section id="highlighed-projects">
         <h3>Highlighted Projects</h3>
-        { highlightedProjects }
+        <section id="highlighted-projects-container">
+            { highlightedProjects }
+        </section>
     </section>
 }
 
 const HighlightedProject = props => {
     const projectInfo = props.project;  
-    const projectImagePath = projectInfo.title.toLowerCase().replaceAll(" ", "-") + ".svg";
+    const projectImagePath = "/images/highlighted-projects/" + projectInfo.title.toLowerCase().replaceAll(" ", "-") + ".svg";
     return <section className="highlighted-project">
         <a href={projectInfo.url}>
             <img className="highlighted-project-image" src={projectImagePath}/>

@@ -1,14 +1,14 @@
 section#highlighted-projects section.highlighted-project {
     display: flex;
+    flex-flow: row wrap;
+    margin: 1rem;
+}
+
+section#highlighted-projects #highlighted-projects-container {
+    display: flex;
     flex-flow: column wrap;
 }
 
-section#highlighted-projects {
-    display: flex;
-    flex-flow: row wrap;
-}
-
 img#highlighted-project-image {
-    width: 150px;
     height: 150px;
 }
