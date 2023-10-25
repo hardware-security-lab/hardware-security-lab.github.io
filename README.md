@@ -1,5 +1,7 @@
 # hardware-security-lab.github.io
 
+[![Deploy Gatsby site to Pages](https://github.com/hardware-security-lab/hardware-security-lab.github.io/actions/workflows/gatsby.yml/badge.svg)](https://github.com/hardware-security-lab/hardware-security-lab.github.io/actions/workflows/gatsby.yml)
+
 # Developer Instructions
 1. `yarn` to install dependencies.
 2. `yarn dev` to set up a live updating local development environment
