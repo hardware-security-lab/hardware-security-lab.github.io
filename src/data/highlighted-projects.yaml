@@ -13,14 +13,15 @@
   color: '#482E90'
 - url: https://rambleed.com/
   title: RAMBleed
+  color: '#31A5BF'
   displayTitle: true
-  color: '#D94E41'
 - url: https://lightcommands.com/
   title: Light Commands
   displayTitle: false
 - url: https://lviattack.eu/
   title: Load Value Injection (LVI)
-  displayTitle: false
+  color: '#D94E41'
+  displayTitle: true
 - url: https://cacheoutattack.com/
   title: CacheOut
   displayTitle: false
