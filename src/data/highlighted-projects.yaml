@@ -5,10 +5,10 @@
   title: Spectre
   displayTitle: true
 - url: https://foreshadowattack.eu/
-  title: Meltdown
+  title: Foreshadow
   displayTitle: true
 - url: https://mdsattacks.com/
-  title: MDS Attacks
+  title: Microarchitectural Data Sampling (MDS)
   displayTitle: false
 - url: https://rambleed.com/
   title: RAMBleed
@@ -18,6 +18,7 @@
   displayTitle: false
 - url: https://lviattack.eu/
   title: Load Value Injection (LVI)
+  displayTitle: true
 - url: https://cacheoutattack.com/
   title: CacheOut
   displayTitle: true
