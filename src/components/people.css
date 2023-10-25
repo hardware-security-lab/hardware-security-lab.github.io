@@ -24,7 +24,8 @@ img.person-photo {
 }
 
 div.person-photo-container {
-    width: 150px;
+    min-width: 150px;
+    max-width: 150px;
     height: 150px;
     margin-right: 2%;
     margin-bottom: 2%;
