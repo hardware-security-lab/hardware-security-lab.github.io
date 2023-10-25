@@ -27,7 +27,7 @@ const Header = () => {
       <style type="text/css">@import url(https://fonts.googleapis.com/css?family=Montserrat:700);</style>
       <HeaderWrapper>
         <HeaderTitle>
-          <Link to="/">{site.siteMetadata.title}</Link>
+          <Link to="/">Architecture.Fail</Link>
         </HeaderTitle>
 
         <HeaderNavList>
