@@ -30,7 +30,7 @@ async function getAllPapers(groupAuthors) {
           (!author.yearLeftTheGroup || author.yearLeftTheGroup >= publicationYear);
       })
       .map(hit => {
-        const authors = (Array.isArray(hit.info.authors.author)
+        const currentPaperAuthors = (Array.isArray(hit.info.authors.author)
           ? hit.info.authors.author
           : [hit.info.authors.author])
           .map(publicationAuthor => {
@@ -46,7 +46,7 @@ async function getAllPapers(groupAuthors) {
           url: hit.info.url,
           doi: hit.info.doi,
           id: hit["@id"],
-          authors,
+          authors: currentPaperAuthors,
         };
       });
 
@@ -63,12 +63,18 @@ async function getAllPapers(groupAuthors) {
     let title = paper.title;
     const isPaperDuplicate = seenPaperDOIs.hasOwnProperty(doi) || seenPaperIDs.hasOwnProperty(id) || seenPaperTitles.hasOwnProperty(title);
     const isDanielGenkinACoAuthor = paper.authors.includes("Daniel Genkin") || paper.authors.includes("Genkin, Daniel");
-    if (typeof (doi) !== "undefined" || isPaperDuplicate || !isDanielGenkinACoAuthor) {
+    if (isPaperDuplicate || !isDanielGenkinACoAuthor) {
       return false;
     }
-    seenPaperDOIs[doi] = true;
-    seenPaperIDs[id] = true;
-    seenPaperTitles[title] = true;
+    if (doi !== undefined) {
+      seenPaperDOIs[doi] = true;
+    }
+    if (id !== undefined) {
+      seenPaperIDs[id] = true;
+    }
+    if (title !== undefined) {
+      seenPaperTitles[title] = true;
+    }
     return true;
   });
   filteredPapers.sort((paper1, paper2) => Number(paper2.year) - Number(paper1.year));
