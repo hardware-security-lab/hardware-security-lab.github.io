@@ -10,10 +10,12 @@
 - url: https://mdsattacks.com/
   title: Microarchitectural Data Sampling (MDS)
   displayTitle: true
+  titleSize: small
   color: '#482E90'
 - url: https://rambleed.com/
   title: RAMBleed
   color: '#31A5BF'
+  titleSize: large
   displayTitle: true
 - url: https://lightcommands.com/
   title: Light Commands
@@ -21,6 +23,7 @@
 - url: https://lviattack.eu/
   title: Load Value Injection (LVI)
   color: '#D94E41'
+  titleSize: large
   displayTitle: true
 - url: https://cacheoutattack.com/
   title: CacheOut
