@@ -11,38 +11,38 @@ Students:
   email: s.amer@gatech.edu
   website: 'https://www.linkedin.com/in/samy-amer-859697171/'
 - dblpName: Jalen Chuang
-  yearJoinedTheGroup: 2022
+  yearJoinedTheGroup: 2023
   email: jchuang9@gatech.edu
   website: 'https://gt.rsp.rip'
-- dblpName: Byeongyong Go
-  yearJoinedTheGroup: 2022
-  email: bygo@gatech.edu
-  website: 'https://bygo7.github.io'
 - dblpName: Nureddin Kamadan
-  yearJoinedTheGroup: 2019
+  yearJoinedTheGroup: 2022
   email: kamadan@gatech.edu
   website: 'https://www.linkedin.com/in/nureddin-kamadan'
 - dblpName: Ingab Kang
-  yearJoinedTheGroup: 2022
+  yearJoinedTheGroup: 2020
   email: igkang@umich.edu
   website: 'https://mojomojo52.github.io'
 - dblpName: Jason Kim 0007
   displayName: Jason Kim
-  yearJoinedTheGroup: 2022
+  yearJoinedTheGroup: 2021
   email: nosajmik@gatech.edu
   website: 'https://jasonkim.page'
-- dblpName: Zeezoo Ryu
-  yearJoinedTheGroup: 2022
-  email: zeezooryu@gatech.edu
-  website: 'https://zeezooryu.dev'
 - dblpName: Stephan van Schaik
-  yearJoinedTheGroup: 2021
+  yearJoinedTheGroup: 2020
   email: stephvs@umich.edu
   website: 'https://codentium.com/about'
 - dblpName: Walter Wang
-  yearJoinedTheGroup: 2018
+  yearJoinedTheGroup: 2023
   email: walwan@gatech.edu
   website: 'https://walwan.uphd.me/'
+- dblpName: Oytun Kuday Duran
+  yearJoinedTheGroup: 2024
+  email: oduran6@gatech.edu
+  website: 'https://www.linkedin.com/in/oytunkuday/'
+- dblpName: Navneet
+  yearJoinedTheGroup: 2024
+  email: n41@gatech.edu
+  website: 'https://www.linkedin.com/in/navneet-navneet-7091a4215/'
 Close Collaborators:
 - dblpName: Youssef Tobah
   email: ytobah@umich.edu
@@ -56,3 +56,17 @@ Alumni:
   website: 'https://andrewkwong.org'
   firstPositionTitleAfterGraduating: Assistant Professor
   firstPositionInstitutionAfterGraduating: UNC Chapel Hill
+- dblpName: Byeongyong Go
+  yearJoinedTheGroup: 2022
+  yearLeftTheGroup: 2023
+  email: bygo@gatech.edu
+  website: 'https://bygo7.github.io'
+  firstPositionTitleAfterGraduating: Software Engineer
+  firstPositionInstitutionAfterGraduating: Amazon
+- dblpName: Zeezoo Ryu
+  yearJoinedTheGroup: 2023
+  yearLeftTheGroup: 2023
+  email: zeezooryu@gatech.edu
+  website: 'https://zeezooryu.dev'
+  firstPositionTitleAfterGraduating: PhD Student
+  firstPositionInstitutionAfterGraduating: Georgia Tech
