@@ -6,18 +6,18 @@ Faculty:
   yearJoinedTheGroup: 2014
 Post-Doctoral Researchers: []
 Students:
-- dblpName: Samy Amer
-  yearJoinedTheGroup: 2023
-  email: s.amer@gatech.edu
-  website: 'https://www.linkedin.com/in/samy-amer-859697171/'
+- dblpName: Nicolas Berrios
+  yearJoinedTheGroup: 2025
+  email: berrios@gatech.edu
+  website: '#'
 - dblpName: Jalen Chuang
   yearJoinedTheGroup: 2023
-  email: jchuang9@gatech.edu
+  email: jchuang@gatech.edu
   website: 'https://gt.rsp.rip'
-- dblpName: Nureddin Kamadan
-  yearJoinedTheGroup: 2022
-  email: kamadan@gatech.edu
-  website: 'https://www.linkedin.com/in/nureddin-kamadan'
+- dblpName: Chengsong Diao
+  yearJoinedTheGroup: 2025
+  email: cdiao30@gatech.edu
+  website: '#'
 - dblpName: Ingab Kang
   yearJoinedTheGroup: 2020
   email: igkang@umich.edu
@@ -27,39 +27,35 @@ Students:
   yearJoinedTheGroup: 2021
   email: nosajmik@gatech.edu
   website: 'https://jasonkim.page'
-- dblpName: Stephan van Schaik
-  yearJoinedTheGroup: 2020
-  email: stephvs@umich.edu
-  website: 'https://codentium.com/about'
 - dblpName: Walter Wang
   yearJoinedTheGroup: 2023
   email: walwan@gatech.edu
   website: 'https://walwan.uphd.me/'
-- dblpName: Oytun Kuday Duran
-  yearJoinedTheGroup: 2024
-  email: oduran6@gatech.edu
-  website: 'https://www.linkedin.com/in/oytunkuday/'
-- dblpName: Navneet
-  yearJoinedTheGroup: 2024
-  email: n41@gatech.edu
-  website: 'https://www.linkedin.com/in/navneet-navneet-7091a4215/'
-Close Collaborators:
-- dblpName: Youssef Tobah
-  email: ytobah@umich.edu
-  yearJoinedTheGroup: 2020
-  website: 'https://www.linkedin.com/in/youssef-tobah-8b5a24114/'
+#Close Collaborators:
 Alumni:
 - dblpName: Andrew Kwong
   yearJoinedTheGroup: 2018
   yearLeftTheGroup: 2023
-  email: andrew@cs.unc.edu
   website: 'https://andrewkwong.org'
   firstPositionTitleAfterGraduating: Assistant Professor
   firstPositionInstitutionAfterGraduating: UNC Chapel Hill
 - dblpName: Byeongyong Go
   yearJoinedTheGroup: 2022
   yearLeftTheGroup: 2023
-  email: bygo@gatech.edu
   website: 'https://bygo7.github.io'
   firstPositionTitleAfterGraduating: Software Engineer
   firstPositionInstitutionAfterGraduating: Amazon
+- dblpName: Youssef Tobah
+  yearJoinedTheGroup: 2020
+  website: 'https://www.linkedin.com/in/youssef-tobah-8b5a24114/'
+  firstPositionInstitutionAfterGraduating: MIT Lincoln Labs
+- dblpName: Stephan van Schaik
+  yearJoinedTheGroup: 2020
+  website: 'https://codentium.com/about'
+  firstPositionInstitutionAfterGraduating: Self-employed
+- dblpName: Nureddin Kamadan
+  yearJoinedTheGroup: 2022
+#  email: kamadan@gatech.edu
+  website: 'https://www.linkedin.com/in/nureddin-kamadan'
+  firstPositionTitleAfterGraduating: PhD Student
+  firstPositionInstitutionAfterGraduating: University of Oxford

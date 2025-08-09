@@ -71,6 +71,10 @@ const ProfilePhoto = props => {
     const firstPositionInstitutionAfterGraduatingOrNull = person.firstPositionInstitutionAfterGraduating !== undefined
         ? <div className="person-first-position-institution-after-graduating">{person.firstPositionInstitutionAfterGraduating}</div>
         : null;
+    const emailOrNull = person.email !== undefined
+        ? <div className="person-email">{person.email}</div>
+        : null;
+ 
     
     return <div className="person-container">
         <div className="person-photo-container">
@@ -78,7 +82,7 @@ const ProfilePhoto = props => {
         </div>
         <div className="person-information">
             <p className="person-name">{personName}</p>
-            <p className="person-email">{emailMangle(person.email)}</p>
+            { emailOrNull }
             <p className="person-website"><a href={website}>Website</a></p>
             { firstPositionTitleAfterGraduatingOrNull }
             { firstPositionInstitutionAfterGraduatingOrNull }
