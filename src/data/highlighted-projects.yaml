@@ -46,3 +46,6 @@
 - url: https://predictors.fail/
   title: FLOP
   displayTitle: false
+- url: https://ecc.fail/
+  title: ECC.fail
+  displayTitle: false
