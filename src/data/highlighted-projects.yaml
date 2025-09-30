@@ -40,12 +40,16 @@
 - url: https://gofetch.fail/
   title: GoFetch
   displayTitle: false
-- url: https://predictors.fail/
+- url: https://predictors.fail/#slap
   title: SLAP
   displayTitle: false
-- url: https://predictors.fail/
+- url: https://predictors.fail/#flop
   title: FLOP
   displayTitle: false
 - url: https://ecc.fail/
   title: ECC.fail
   displayTitle: false
+- url: https://wiretap.fail/
+  title: WireTap.fail
+  displayTitle: false
+  width: 500px

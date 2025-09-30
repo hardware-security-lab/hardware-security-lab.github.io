@@ -2,8 +2,9 @@ Faculty:
 - dblpName: Daniel Genkin
   displayName: Daniel Genkin
   email: genkin@gatech.edu
-  website: 'https://faculty.cc.gatech.edu/~genkin'
+  website: 'https://genkin.io'
   yearJoinedTheGroup: 2014
+  dblpEnabled: true
 Post-Doctoral Researchers: []
 Students:
 - dblpName: Nicolas Berrios

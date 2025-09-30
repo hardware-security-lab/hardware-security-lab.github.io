@@ -17,9 +17,18 @@ const HighlightedProject = props => {
     const projectImagePath = "/images/highlighted-projects/" + projectInfo.title.toLowerCase().replaceAll(" ", "-") + ".svg";
     const projectTitle = projectInfo.displayTitle ? projectInfo.title : null;
     const imageClassname = "highlighted-project-image " + (projectInfo.displayTitle ? "programmatic-title" : "");
-    return <section className="highlighted-project" style={projectInfo.titleSize !== undefined ? {fontSize: projectInfo.titleSize} : {}}>
-        <a style={projectInfo.color !== undefined ? {color: projectInfo.color} : {}} className="highlighted-project-title" href={projectInfo.url}>
-            <img className={imageClassname} src={projectImagePath}/>
+
+    const titleStyle = {};
+    if(projectInfo.color !== undefined) titleStyle["color"] = projectInfo.color;
+    const sectionStyle = {};
+    if(projectInfo.width !== undefined) sectionStyle["width"] = projectInfo.width;
+    if(projectInfo.titleSize !== undefined) sectionStyle["fontSize"] = projectInfo.titleSize;
+    const imgStyle = {};
+    if(projectInfo.width !== undefined) imgStyle["width"] = projectInfo.width;
+
+    return <section className="highlighted-project" style={sectionStyle}>
+        <a style={titleStyle} className="highlighted-project-title" href={projectInfo.url}>
+            <img className={imageClassname} style={imgStyle} src={projectImagePath}/>
             { projectTitle }
         </a>
     </section>

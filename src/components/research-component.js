@@ -9,10 +9,12 @@ import people from "../data/people.yaml";
 //   yearJoinedTheGroup :: int - The year this person joined the group (to exclude publications from before)
 //   yearLeftTheGroup :: int - The year this person left the group (to exclude publications from after, if it is defined)
 async function getAllPapers(groupAuthors) {
-
   const paperListPerAuthor = [];
 
   for (const author of groupAuthors) {
+    if (author.dblpEnabled === undefined || author.dblpEnabled) {
+      continue;
+    }
     const dblpNameWithUnderscores = author.dblpName.replace(/ /g, "_");
     const response = await fetch(`https://dblp.org/search/publ/api?q=author%3A${dblpNameWithUnderscores}%3A&h=250&format=json`);
     const responseJson = await response.json();
