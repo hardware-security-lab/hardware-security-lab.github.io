@@ -12,7 +12,7 @@ async function getAllPapers(groupAuthors) {
   const paperListPerAuthor = [];
 
   for (const author of groupAuthors) {
-    if (author.dblpEnabled === undefined || author.dblpEnabled) {
+    if (author.dblpEnabled === undefined || !author.dblpEnabled) {
       continue;
     }
     const dblpNameWithUnderscores = author.dblpName.replace(/ /g, "_");
