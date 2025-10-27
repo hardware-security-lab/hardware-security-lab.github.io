@@ -3,7 +3,7 @@ import './server-section.css';
 
 const ServerSection = () => {
     return <section id="awards" className="major">
-        <h2>Our Awards</h2>
+        <h2>Our Awards 🏆</h2>
         A big thanks to the following venues for recognizing our work:
         <section id="awards">
           <ul>
