@@ -52,4 +52,7 @@
 - url: https://wiretap.fail/
   title: WireTap.fail
   displayTitle: false
-  width: 500px
+  width: 400px
+- url: https://tee.fail/
+  title: TEE.fail
+  displayTitle: false
