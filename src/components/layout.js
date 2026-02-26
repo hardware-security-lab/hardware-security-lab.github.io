@@ -1,6 +1,7 @@
 import React, { Fragment } from "react";
 import Seo from "./seo";
 import Header from "./header";
+import Banner from "./banner";
 import Footer from "./footer";
 import Container from "./container";
 import GlobalStyle from "./global-styles";
@@ -13,6 +14,7 @@ const Layout = ({ children, title, description, socialImage = "" }) => {
       <Seo title={title} description={description} socialImage={socialImage} />
       <LayoutWrapper>
         <Header />
+        <Banner />
         <main>
           <Container>{children}</Container>
         </main>
