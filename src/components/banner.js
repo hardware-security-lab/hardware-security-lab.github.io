@@ -45,7 +45,7 @@ const Banner = () => {
     const quack = params.get("quack");
     if (duck && quack) {
       fetch(
-        `https://duck.arch.fail/check?duck=${encodeURIComponent(duck)}&quack=${encodeURIComponent(quack)}`
+        `https://duck.architecture.fail/check?duck=${encodeURIComponent(duck)}&quack=${encodeURIComponent(quack)}`
       )
         .then((res) => res.json())
         .then((data) => {
