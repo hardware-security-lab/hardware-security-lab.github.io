@@ -7,7 +7,8 @@ const KNOWN_SOURCES = {
   duck: {
     message: (
       <>
-        Nice duck 🦆! Did you know your duck is also a secure NFC tag? You can
+        Nice duck 🦆!
+        <br/>Did you know your duck is also a secure NFC tag? You can
         authenticate your duck by scanning it with your phone!
       </>
     ),
@@ -44,7 +45,7 @@ const Banner = () => {
     const quack = params.get("quack");
     if (duck && quack) {
       fetch(
-        `http://localhost:8000/check?duck=${encodeURIComponent(duck)}&quack=${encodeURIComponent(quack)}`
+        `http://localhost:5000/check?duck=${encodeURIComponent(duck)}&quack=${encodeURIComponent(quack)}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -121,7 +122,7 @@ const Positioner = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 901;
-    width: min(520px, 90vw);
+    width: min(1000px, 90vw);
   }
 `;
 
