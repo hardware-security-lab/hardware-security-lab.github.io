@@ -45,7 +45,7 @@ const Banner = () => {
     const quack = params.get("quack");
     if (duck && quack) {
       fetch(
-        `http://localhost:5000/check?duck=${encodeURIComponent(duck)}&quack=${encodeURIComponent(quack)}`
+        `https://duck.arch.fail/check?duck=${encodeURIComponent(duck)}&quack=${encodeURIComponent(quack)}`
       )
         .then((res) => res.json())
         .then((data) => {
@@ -131,8 +131,10 @@ const AlertBox = styled.div`
   color: ${({ $theme }) => $theme.color};
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  width: fit-content;
+  justify-content: center;
   font-size: 0.95rem;
+  margin: auto;
 
   @media (max-width: calc(${MOBILE_BREAKPOINT} - 1px)) {
     border-left: 4px solid ${({ $theme }) => $theme.border};
