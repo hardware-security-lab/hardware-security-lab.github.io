@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import { Link } from "gatsby";
+import { Link, Script } from "gatsby";
 import Container from "./container";
 import ThemeSwitch from "./theme-switch";
 import { useStaticQuery, graphql } from "gatsby";
@@ -51,6 +51,7 @@ const Header = () => {
             {/* <ThemeSwitch /> */}
           </HeaderNavListItem>
         </HeaderNavList>
+        <Script src="//s3.tracemyip.org/vLg/lgUrl.php?pidnVar2=77172&amp;prtVar2=7&amp;stlVar2=1108&amp;rgtype=4684NR-IPIB&amp;scvVar2=12&amp;gustInvT=fzize0" />
       </HeaderWrapper>
     </StyledHeader>
   );
