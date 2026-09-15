@@ -1,95 +1,89 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { Link } from "gatsby";
-import styled from 'styled-components';
+import styled from "styled-components";
 import people from "../data/people.yaml";
 
-// Gets a list of all publications from DBLP for which at least one group member was an author
+// Gets a list of all publications from Semantic Scholar for which Daniel Genkin was an author
 // groupAuthors is an array of Objects with the following keys:
-//   dblpName :: string - Person's full name according to DBLP
+//   dblpName :: string - Person's full name according to the people data
 //   yearJoinedTheGroup :: int - The year this person joined the group (to exclude publications from before)
 //   yearLeftTheGroup :: int - The year this person left the group (to exclude publications from after, if it is defined)
 async function getAllPapers(groupAuthors) {
-  const paperListPerAuthor = [];
+  const semanticScholarAuthorIds = ["2062558", "2295580685"];
+  const enabledGroupAuthors = groupAuthors.filter(
+    (author) => author.dblpEnabled
+  );
+  const fields =
+    "title,authors,venue,url,publicationTypes,publicationDate,openAccessPdf,externalIds";
+  const paperLists = await Promise.all(
+    semanticScholarAuthorIds.map(async (authorId) => {
+      const response = await fetch(
+        `https://api.semanticscholar.org/graph/v1/author/${authorId}/papers?fields=${fields}&limit=250`
+      );
+      const responseJson = await response.json();
+      return responseJson.data || [];
+    })
+  );
 
-  for (const author of groupAuthors) {
-    if (author.dblpEnabled === undefined || !author.dblpEnabled) {
-      continue;
-    }
-    const dblpNameWithUnderscores = author.dblpName.replace(/ /g, "_");
-    const response = await fetch(`https://dblp.org/search/publ/api?q=author%3A${dblpNameWithUnderscores}%3A&h=250&format=json`);
-    const responseJson = await response.json();
-    const hits = responseJson.result.hits.hit;
+  const allPapers = paperLists
+    .flat()
+    .map((paper) => {
+      const publicationYear = paper.publicationDate
+        ? Number(paper.publicationDate.substring(0, 4))
+        : NaN;
+      const currentPaperAuthors = (paper.authors || []).map(
+        (publicationAuthor) => publicationAuthor.name
+      );
+      let paperVenue = paper.venue || "";
 
-    if (!hits) {
-      paperListPerAuthor.push([]);
-      continue;
-    }
+      if (
+        paperVenue === "CCS" ||
+        paperVenue === "Conference on Computer and Communications Security"
+      ) {
+        paperVenue =
+          "ACM Conference on Computer and Communications Security (CCS)";
+      } else if (paperVenue === "SP") {
+        paperVenue = "IEEE Symposium on Security and Privacy (Oakland)";
+      }
 
-    const papers = hits
-      .filter(hit => {
-        const publicationYear = parseInt(hit.info.year);
-        return author.yearJoinedTheGroup <= publicationYear &&
-          (!author.yearLeftTheGroup || author.yearLeftTheGroup >= publicationYear);
-      })
-      .map(hit => {
-        const currentPaperAuthors = (Array.isArray(hit.info.authors.author)
-          ? hit.info.authors.author
-          : [hit.info.authors.author])
-          .map(publicationAuthor => {
-            // Split the author by spaces, and if any element has only numbers, remove it
-            const authorNameSplit = publicationAuthor.text.split(' ');
+      return {
+        title: paper.title,
+        year: publicationYear,
+        venue: paperVenue,
+        type: paper.publicationTypes || [],
+        url:
+          paper.openAccessPdf?.url ||
+          (paper.externalIds?.DOI
+            ? `https://doi.org/${paper.externalIds.DOI}`
+            : paper.url),
+        id: paper.paperId,
+        authors: currentPaperAuthors,
+      };
+    })
+    .filter((paper) => {
+      return enabledGroupAuthors.some(
+        (author) =>
+          author.yearJoinedTheGroup <= paper.year &&
+          (!author.yearLeftTheGroup || author.yearLeftTheGroup >= paper.year)
+      );
+    });
 
-            // Filter out elements with only numbers
-            const filteredAuthorArray = authorNameSplit.filter(element => !/^\d+$/.test(element));
-
-            // Join the filtered elements back into a single string
-            return filteredAuthorArray.join(' ');
-          });
-
-        let paperVenue = "";
-        if (hit.info.venue !== undefined) {
-          paperVenue = hit.info.venue.replace(/&amp;/g, '&').replace(/&lt;/g, '<').replace(/&gt;/g, '>');
-        }
-        
-        if (paperVenue === "CCS") {
-          paperVenue = "ACM Conference on Computer and Communications Security (CCS)";
-        } else if (paperVenue === "SP") {
-          paperVenue = "IEEE Symposium on Security and Privacy (Oakland)";
-        }
-
-        return {
-          title: hit.info.title,
-          year: Number(hit.info.year),
-          venue: paperVenue,
-          type: hit.info.type,
-          url: hit.info.ee || hit.info.url,
-          doi: hit.info.doi,
-          id: hit["@id"],
-          authors: currentPaperAuthors,
-        };
-      });
-
-    paperListPerAuthor.push(papers);
-  }
-
-  const allPapers = [].concat(...paperListPerAuthor);
-  let seenPaperDOIs = {};
   let seenPaperIDs = {};
   let seenPaperTitles = {};
-  const filteredPapers = allPapers.filter(paper => {
-    let doi = paper.doi;
+  const filteredPapers = allPapers.filter((paper) => {
     let id = paper.id;
     let title = paper.title.toLowerCase();
     let paperType = paper.type;
-    const isPaperDuplicate = seenPaperDOIs.hasOwnProperty(doi) || seenPaperIDs.hasOwnProperty(id) || seenPaperTitles.hasOwnProperty(title);
-    const isDanielGenkinACoAuthor = paper.authors.includes("Daniel Genkin") || paper.authors.includes("Genkin, Daniel");
+    const isPaperDuplicate =
+      seenPaperIDs.hasOwnProperty(id) || seenPaperTitles.hasOwnProperty(title);
+    const isDanielGenkinACoAuthor =
+      paper.authors.includes("Daniel Genkin") ||
+      paper.authors.includes("Genkin, Daniel");
     // Only allow conference or journal papers
-    const isPeerReviewed = paperType === "Conference and Workshop Papers" || paperType === "Journal Articles"; 
+    const isPeerReviewed =
+      paperType.includes("Conference") || paperType.includes("JournalArticle");
     if (isPaperDuplicate || !isDanielGenkinACoAuthor || !isPeerReviewed) {
       return false;
-    }
-    if (doi !== undefined) {
-      seenPaperDOIs[doi] = true;
     }
     if (id !== undefined) {
       seenPaperIDs[id] = true;
@@ -99,40 +93,39 @@ async function getAllPapers(groupAuthors) {
     }
     return true;
   });
-  filteredPapers.sort((paper1, paper2) => Number(paper2.year) - Number(paper1.year));
+  filteredPapers.sort(
+    (paper1, paper2) => Number(paper2.year) - Number(paper1.year)
+  );
   return filteredPapers;
 }
 
 const ResearchList = (props) => {
   const PublicationList = props.publications.map((publication) => {
-    return (
-      <ResearchListItem publication={publication}
-        key={publication.id}
-      />
-    );
+    return <ResearchListItem publication={publication} key={publication.id} />;
   });
 
   return <StyledResearchList>{PublicationList}</StyledResearchList>;
-}
-
+};
 
 const ResearchComponent = ({ data }) => {
   // Use map to get a list of all authors in each key and store it in an array
-  const groupAuthors = Object.keys(people).flatMap(key => people[key]);
+  const groupAuthors = Object.keys(people).flatMap((key) => people[key]);
   let [allPapers, setAllPapers] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
       let papers = await getAllPapers(groupAuthors);
       setAllPapers(papers);
-    }
+    };
     fetchData();
   }, []);
 
-  return <section>
-    <h2>Research</h2>
-    <ResearchList publications={allPapers} />
-  </section>
+  return (
+    <section>
+      <h2>Research</h2>
+      <ResearchList publications={allPapers} />
+    </section>
+  );
 };
 
 function getAuthorListString(authorList) {
@@ -142,7 +135,7 @@ function getAuthorListString(authorList) {
     return authorList[0];
   }
   let authorListString = authorList[0];
-  authorList.slice(1, authorList.length - 1).forEach(author => {
+  authorList.slice(1, authorList.length - 1).forEach((author) => {
     authorListString += ", " + author;
   });
   authorListString += " and " + authorList[authorList.length - 1];
@@ -164,8 +157,9 @@ const ResearchListItem = (props) => {
         }}
       />
 
-      <span>{publication.venue} {publication.year}</span>
-
+      <span>
+        {publication.venue} {publication.year}
+      </span>
     </StyledResearchListItem>
   );
 };
@@ -198,10 +192,10 @@ const StyledResearchListItem = styled.li`
     & {
       margin-top: var(--size-600);
     }
-  
-  @media screen and (max-width: 769px) {
-    font-size: 0.75em;
-  }
+
+    @media screen and (max-width: 769px) {
+      font-size: 0.75em;
+    }
   }
 `;
 
